@@ -7,3 +7,5 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 TestEnv.swift
+*.env
+.env
