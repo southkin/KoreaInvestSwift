@@ -9,3 +9,4 @@ DerivedData/
 TestEnv.swift
 *.env
 .env
+KoreaInvestSwiftTests.swift
