@@ -10,3 +10,4 @@ TestEnv.swift
 *.env
 .env
 KoreaInvestSwiftTests.swift
+Test/*
