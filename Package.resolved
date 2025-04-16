@@ -1,13 +1,13 @@
 {
-  "originHash" : "4d5f2df1b1af836516775071a6cd51c30ae82c681ef39fdd7bf211cfc936687c",
+  "originHash" : "4141baa794cf8bec9d03a6b8485756e34cb9e399bf8c203a218b3252aa4463b6",
   "pins" : [
     {
       "identity" : "fullyrestful",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/southkin/FullyRESTful.git",
       "state" : {
-        "revision" : "cdae0ac6dc2a165e2bbf1e009dc81de8a00870d6",
-        "version" : "3.1.1"
+        "revision" : "27743ca9c256a055c16ec0b8ab966223a589720f",
+        "version" : "3.1.2"
       }
     }
   ],

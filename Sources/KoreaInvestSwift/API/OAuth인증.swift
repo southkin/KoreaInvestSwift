@@ -46,12 +46,12 @@ public extension KISAPI.OAuth인증 {
         public var method:HTTPMethod = .POST
         public let server: ServerInfo
         public let path = "/oauth2/Approval"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init() throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
             ])
-            self.header["Content-Type"] = "application/json; charset=utf-8"
+            self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
     }
     
@@ -85,14 +85,14 @@ public extension KISAPI.OAuth인증 {
         public var method:HTTPMethod = .POST
         public let server: ServerInfo
         public let path = "/uapi/hashkey"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init() throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "appkey",
                 "appsecret"
             ])
-            self.header["Content-Type"] = "application/json; charset=utf-8"
+            self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
     }
     
@@ -149,12 +149,12 @@ public extension KISAPI.OAuth인증 {
         public var method:HTTPMethod = .POST
         public let server: ServerInfo
         public let path = "/oauth2/tokenP"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init() throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
             ])
-            self.header["Content-Type"] = "application/json; charset=utf-8"
+            self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
     }
     ///접근토큰폐기(P)[인증-002]
@@ -186,12 +186,12 @@ public extension KISAPI.OAuth인증 {
         public var method:HTTPMethod = .POST
         public let server: ServerInfo
         public let path = "/oauth2/revokeP"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init() throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
             ])
-            self.header["Content-Type"] = "application/json; charset=utf-8"
+            self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
     }
 }

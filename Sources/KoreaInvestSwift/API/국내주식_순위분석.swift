@@ -104,10 +104,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/quotations/volume-rank"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01710000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -123,10 +123,10 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["Content-Type"] = "application/json; charset=utf-8"
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -243,10 +243,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/fluctuation"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01700000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -262,9 +262,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -366,10 +366,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/profit-asset-index"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01730000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -385,9 +385,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -463,10 +463,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/market-cap"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01740000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -482,9 +482,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -604,10 +604,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/finance-ratio"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01750000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -623,9 +623,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -704,10 +704,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/after-hour-balance"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01760000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -723,9 +723,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -813,10 +813,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/prefer-disparate-ratio"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01770000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -832,9 +832,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -917,10 +917,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/quote-balance"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01720000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -936,9 +936,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1024,10 +1024,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/disparity"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01780000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1043,9 +1043,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1151,10 +1151,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/market-value"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01790000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1170,9 +1170,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1248,10 +1248,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/volume-power"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01680000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1267,9 +1267,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1355,10 +1355,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/top-interest-stock"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01800000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1374,9 +1374,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1463,10 +1463,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/exp-trans-updown"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01820000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1482,9 +1482,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1571,10 +1571,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/traded-by-company"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01860000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1590,9 +1590,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1687,10 +1687,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/near-new-highlow"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST01870000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1706,9 +1706,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1793,10 +1793,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/bulk-trans-num"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHKST190900C0", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1812,9 +1812,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -1901,10 +1901,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/short-sale"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST04820000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -1920,9 +1920,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -2007,10 +2007,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/credit-balance"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHKST17010000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -2026,9 +2026,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -2091,10 +2091,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/dividend-rate"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "HHKDB13470100", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -2110,9 +2110,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -2227,10 +2227,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/overtime-fluctuation"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST02340000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -2246,9 +2246,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -2342,10 +2342,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/overtime-volume"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "FHPST02350000", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -2361,9 +2361,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 
@@ -2411,10 +2411,10 @@ extension KISAPI.국내주식_순위분석 {
         public var method:HTTPMethod = .GET
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/ranking/hts-top-view"
-        public var header: [String : String]
+        public var customHeader: [String : String]?
         init(tr_id: String = "HHMCM000100C0", gt_uid: String? = nil) async throws {
             self.server = try KISManager.getCurrentServer()
-            self.header = KISManager.headerPick(names: [
+            self.customHeader = KISManager.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
                 "authorization", // OAuth 토큰이 필요한 API 경우 발급한 Access token 일반고객(Access token 유효기간 1일, OAuth 2.0의 Client Credentials Grant 절차를 준용) 법인(Access token 유효기간 3개월, Refresh token 유효기간 1년, OAuth 2.0의 Authorization Code Grant 절차를 준용)
                 "appkey", // 한국투자증권 홈페이지에서 발급받은 appkey (절대 노출되지 않도록 주의해주세요.)
@@ -2430,9 +2430,9 @@ extension KISAPI.국내주식_순위분석 {
                 "hashkey", // [POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값 * API문서 > hashkey 참조
                 "gt_uid", // [법인 필수] 거래고유번호로 사용하므로 거래별로 UNIQUE해야 함
             ])
-            self.header["authorization"] = await KISManager.getAccessToken()?.token
-            self.header["gt_uid"] = gt_uid
-            self.header["tr_id"] = tr_id
+            self.customHeader?["authorization"] = await KISManager.getAccessToken()?.token
+            self.customHeader?["gt_uid"] = gt_uid
+            self.customHeader?["tr_id"] = tr_id
         }
     }
 }

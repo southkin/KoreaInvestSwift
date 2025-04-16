@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/southkin/FullyRESTful.git", from: "3.0.0"),
-//        .package(url: "https://github.com/southkin/FullyRESTful.git", branch: "dev")
+//        .package(url: "https://github.com/southkin/FullyRESTful.git", branch: "main")
     ],
     targets: [
         .target(

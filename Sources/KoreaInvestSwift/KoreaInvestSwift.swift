@@ -200,8 +200,11 @@ public protocol Pagingable {
 }
 public extension APIITEM {
     mutating func run(param:RequestModel) async throws -> ResponseModel? {
-        header.removeValue(forKey: "tr_cont")
-        header["hashkey"] = await getHashHeaderIfNeeded(param: param)
+        if var header = customHeader {
+            header.removeValue(forKey: "tr_cont")
+            header["hashkey"] = await getHashHeaderIfNeeded(param: param)
+            customHeader = header
+        }
         let result = try await request(param: param)
         guard let response = result?.rawResponse,
               let obj:ResponseModel = result?.model
@@ -223,8 +226,11 @@ public extension APIITEM {
                 print("리퀘스트 정보가 없습니다")
                 throw NSError(domain: "KISManager", code: 0, userInfo: nil)
             }
-            header["tr_cont"] = "N"
-            header["hashkey"] = await getHashHeaderIfNeeded(param: reqParam)
+            if var header = customHeader {
+                header["tr_cont"] = "N"
+                header["hashkey"] = await getHashHeaderIfNeeded(param: reqParam)
+                self.customHeader = header
+            }
             let result = try await request(param: reqParam)
             guard let response = result?.rawResponse,
                   let obj:ResponseModel = result?.model
