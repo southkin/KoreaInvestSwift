@@ -9,7 +9,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 해외주식_시세분석 {}
 }
-extension KISAPI.해외주식_시세분석 {
+public extension KISAPI.해외주식_시세분석 {
     /// 해외주식 가격급등락[해외주식-038]
     struct pricefluct : APIITEM, NeedHash {
         public struct Request : Codable {
@@ -32,7 +32,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -136,7 +136,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -240,7 +240,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -345,7 +345,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -461,7 +461,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -571,7 +571,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -685,7 +685,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -793,7 +793,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -901,7 +901,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1008,7 +1008,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let KEYB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1124,7 +1124,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let CTX_AREA_FK50:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1236,7 +1236,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백 입력
             let CTS:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1319,7 +1319,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 미입력 시, 오늘+3개월 기간지정 시, 종료일 입력(ex. 20240514) ※ 조회기간 기준일 입력시 참고 - 상환: 상환일자, 조기상환: 조기상환일자, 티커변경: 적용일, 그 외: 발표일
             let ED_YMD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1427,7 +1427,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 공백
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1532,7 +1532,7 @@ extension KISAPI.해외주식_시세분석 {
             /// 화면번호:11801
             let FID_COND_SCR_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

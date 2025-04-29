@@ -8,7 +8,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 해외주식_주문_계좌 {}
 }
-extension KISAPI.해외주식_주문_계좌 {
+public extension KISAPI.해외주식_주문_계좌 {
     /// 해외주식 주문[v1_해외주식-001]
     /// 해외주식 주문 API입니다.* 모의투자의 경우, 모든 해외 종목 매매가 지원되지 않습니다. 일부 종목만 매매 가능한 점 유의 부탁드립니다.* 해외주식 서비스 신청 후 이용 가능합니다. (아래 링크 3번 해외증권 거래신청 참고)https://securities.koreainvestment.com/main/bond/research/_static/TF03ca010001.jsp* 해외 거래소 운영시간 외 API 호출 시 에러가 발생하오니 운영시간을 확인해주세요.* 해외 거래소 운영시간(한국시간 기준)1) 미국 : 23:30 ~ 06:00 (썸머타임 적용 시 22:30 ~ 05:00)    * 프리마켓(18:00 ~ 23:30, Summer Time : 17:00 ~ 22:30), 애프터마켓(06:00 ~ 07:00, Summer Time : 05:00 ~ 07:00) 시간대에도 주문 가능2) 일본 : (오전) 09:00 ~ 11:30, (오후) 12:30 ~ 15:003) 상해 : 10:30 ~ 16:004) 홍콩 : (오전) 10:30 ~ 13:00, (오후) 14:00 ~ 17:00※ POST API의 경우 BODY값의 key값들을 대문자로 작성하셔야 합니다.   (EX. "CANO" : "12345678", "ACNT_PRDT_CD": "01",...)※ 종목코드 마스터파일 파이썬 정제코드는 한국투자증권 Github 참고 부탁드립니다.   https://github.com/koreainvestment/open-trading-api/tree/main/stocks_info
     struct order : APIITEM, NeedHash {

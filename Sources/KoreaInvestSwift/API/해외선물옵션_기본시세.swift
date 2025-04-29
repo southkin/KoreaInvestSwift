@@ -9,7 +9,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 해외선물옵션_기본시세 {}
 }
-extension KISAPI.해외선물옵션_기본시세 {
+public extension KISAPI.해외선물옵션_기본시세 {
     /// 해외선물종목상세 [v1_해외선물-008]
     /// (중요) 해외선물시세 출력값을 해석하실 때 ffcode.mst(해외선물종목마스터 파일)에 있는 sCalcDesz(계산 소수점) 값을 활용하셔야 정확한 값을 받아오실 수 있습니다.- ffcode.mst(해외선물종목마스터 파일) 다운로드 방법 2가지  1) 한국투자증권 Github의 파이썬 샘플코드를 사용하여 mst 파일 다운로드 및 excel 파일로 정제        https://github.com/koreainvestment/open-trading-api/blob/main/stocks_info/overseas_future_code.py   2) 혹은 포럼 - FAQ - 종목정보 다운로드(해외) - 해외지수선물 클릭하셔서 ffcode.mst(해외선물종목마스터 파일)을 다운로드 후     Github의 헤더정보(https://github.com/koreainvestment/open-trading-api/blob/main/stocks_info/해외선물정보.h)를 참고하여 해석- 소수점 계산 시, ffcode.mst(해외선물종목마스터 파일)의 sCalcDesz(계산 소수점) 값 참고  EX) ffcode.mst 파일의 sCalcDesz(계산 소수점) 값       품목코드 6A 계산소수점 -4 → 시세 6882.5 수신 시 0.68825 로 해석       품목코드 GC 계산소수점 -1 → 시세 19225 수신 시 1922.5 로 해석※ CME, SGX 거래소 API시세는 유료시세로 HTS/MTS에서 유료가입 후 익일부터 시세 이용 가능합니다.포럼 > FAQ > 해외선물옵션 API 유료시세 신청방법(CME, SGX 거래소)
     struct stockdetail : APIITEM, NeedHash {
@@ -18,7 +18,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// ex) CNHU24 ※ 종목코드 "포럼 > FAQ > 종목정보 다운로드(해외) - 해외지수선물" 참고
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -135,7 +135,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// ex) CNHU24 ※ 종목코드 "포럼 > FAQ > 종목정보 다운로드(해외) - 해외지수선물" 참고
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -302,7 +302,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 다음조회(QRY_TP를 P로 입력) 시, 이전 호출의 "output1 > index_key" 기입하여 조회
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -407,7 +407,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 공백
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -511,7 +511,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 공백
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -615,7 +615,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 공백
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -720,7 +720,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 공백
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -803,7 +803,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 종목코드
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -897,7 +897,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 품목종류
             let SRS_CD_32:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1005,7 +1005,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 연속조회검색조건200
             let CTX_AREA_FK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1094,7 +1094,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 공백
             let CTS_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1185,7 +1185,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 예)OESM24 C5340
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1272,7 +1272,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// ex) OESU24 C5500 ※ 종목코드 "포럼 > FAQ > 종목정보 다운로드(해외) - 해외지수옵션/해외주식옵션" 참고
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1365,7 +1365,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// ex) OESU24 C5500 ※ 종목코드 "포럼 > FAQ > 종목정보 다운로드(해외) - 해외지수옵션/해외주식옵션" 참고
             let SRS_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1500,7 +1500,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// "" 공란 입력
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1607,7 +1607,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// "" 공란 입력 ※ 다음조회 불가
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1715,7 +1715,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 다음조회(QRY_TP를 P로 입력) 시, 이전 호출의 "output1 > index_key" 기입하여 조회
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1822,7 +1822,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// "" 공란 입력
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1929,7 +1929,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 다음조회(QRY_TP를 P로 입력) 시, 이전 호출의 "output1 > index_key" 기입하여 조회
             let INDEX_KEY:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2020,7 +2020,7 @@ extension KISAPI.해외선물옵션_기본시세 {
             /// 종목코드30
             let SRS_CD_30:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

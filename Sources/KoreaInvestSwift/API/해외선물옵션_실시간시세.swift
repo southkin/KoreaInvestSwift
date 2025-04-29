@@ -9,7 +9,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 해외선물옵션_실시간시세 {}
 }
-extension KISAPI.해외선물옵션_실시간시세 {
+public extension KISAPI.해외선물옵션_실시간시세 {
     struct 해외선물옵션_실시간체결가 : KISWebSocketITEM {
         var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])

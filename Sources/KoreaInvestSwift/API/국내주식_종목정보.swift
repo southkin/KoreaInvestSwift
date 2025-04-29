@@ -11,7 +11,7 @@ public extension KISAPI {
     enum 국내주식_종목정보 {}
 }
 
-extension KISAPI.국내주식_종목정보 {
+public extension KISAPI.국내주식_종목정보 {
     /// 상품기본조회[v1_국내주식-029]
     struct searchinfo : APIITEM, NeedHash {
         public struct Request : Codable {
@@ -22,7 +22,7 @@ extension KISAPI.국내주식_종목정보 {
             /// '300 주식 301 선물옵션 302 채권 512 미국 나스닥 / 513 미국 뉴욕 / 529 미국 아멕스 515 일본 501 홍콩 / 543 홍콩CNY / 558 홍콩USD 507 베트남 하노이 / 508 베트남 호치민 551 중국 상해A / 552 중국 심천A'
             let PRDT_TYPE_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -115,7 +115,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 종목번호 (6자리) ETN의 경우, Q로 시작 (EX. Q500001)
             let PDNO:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -315,7 +315,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 000660 : 종목코드
             let fid_input_iscd:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -396,7 +396,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 000660 : 종목코드
             let fid_input_iscd:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -483,7 +483,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 000660 : 종목코드
             let fid_input_iscd:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -561,7 +561,7 @@ extension KISAPI.국내주식_종목정보 {
             /// J
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -628,7 +628,7 @@ extension KISAPI.국내주식_종목정보 {
             /// J
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -696,7 +696,7 @@ extension KISAPI.국내주식_종목정보 {
             /// J
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -763,7 +763,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 시장구분코드 (주식 J)
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -836,7 +836,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 시장구분코드 (주식 J)
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -908,7 +908,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백
             let HIGH_GB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -994,7 +994,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백
             let CTS:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1072,7 +1072,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백: 전체, 특정종목 조회시 : 종목코드
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1163,7 +1163,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 0:전체, 1:코스피, 2:코스닥
             let MARKET_GB:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1237,7 +1237,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백: 전체, 특정종목 조회시 : 종목코드
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1315,7 +1315,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백
             let CTS:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1391,7 +1391,7 @@ extension KISAPI.국내주식_종목정보 {
             /// ~ 일자
             let T_DT:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1477,7 +1477,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백
             let CTS:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1555,7 +1555,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백
             let CTS:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1630,7 +1630,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백(전체), 특정종목 조회시(종목코드)
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1716,7 +1716,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백: 전체, 특정종목 조회시 : 종목코드
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1798,7 +1798,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 공백: 전체, 특정종목 조회시 : 종목코드
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1863,7 +1863,7 @@ extension KISAPI.국내주식_종목정보 {
             /// ex) 265520
             let SHT_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1992,7 +1992,7 @@ extension KISAPI.국내주식_종목정보 {
             /// 미입력 (다음조회 불가)
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2091,7 +2091,7 @@ extension KISAPI.국내주식_종목정보 {
             /// ~ 이전(ex) 0020240513)
             let FID_INPUT_DATE_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2181,7 +2181,7 @@ extension KISAPI.국내주식_종목정보 {
             /// ~ 이전
             let FID_INPUT_DATE_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

@@ -9,7 +9,7 @@ public extension KISAPI {
     enum 국내주식_주문_계좌 {}
     enum 국내주식_주문_계좌_퇴직연금 {}
 }
-extension KISAPI.국내주식_주문_계좌 {
+public extension KISAPI.국내주식_주문_계좌 {
     /// 주식주문(현금)[v1_국내주식-001]
     /// 국내주식주문(현금) API 입니다. ※ TTC0802U(현금매수) 사용하셔서 미수매수 가능합니다. 단, 거래하시는 계좌가 증거금40%계좌로 신청이 되어있어야 가능합니다. ※ 신용매수는 별도의 API가 준비되어 있습니다.※ ORD_QTY(주문수량), ORD_UNPR(주문단가) 등을 String으로 전달해야 함에 유의 부탁드립니다.※ ORD_UNPR(주문단가)가 없는 주문은 상한가로 주문금액을 선정하고 이후 체결이되면 체결금액로 정산됩니다.※ POST API의 경우 BODY값의 key값들을 대문자로 작성하셔야 합니다.   (EX. "CANO" : "12345678", "ACNT_PRDT_CD": "01",...)※ 종목코드 마스터파일 파이썬 정제코드는 한국투자증권 Github 참고 부탁드립니다.   https://github.com/koreainvestment/open-trading-api/tree/main/stocks_info
     struct ordercash : APIITEM, NeedHash {
@@ -42,7 +42,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 한국거래소 : KRX 대체거래소 (넥스트레이드) : NXT → 미입력시 KRX로 진행
             let EXCG_ID_DVSN_CD:String?
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -205,7 +205,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 스탑지정가호가에서 사용
             let CNDT_PRIC:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -330,7 +330,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 한국거래소 : KRX 대체거래소 (넥스트레이드) : NXT
             let EXCG_ID_DVSN_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -441,7 +441,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// '0 전체 1 매도 2 매수'
             let INQR_DVSN_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -590,7 +590,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// '공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)'
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -769,7 +769,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -963,7 +963,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// Y : 포함 N : 포함하지 않음
             let OVRS_ICLD_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -1072,7 +1072,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 대여일자
             let LDNG_DT:String?
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 -
@@ -1165,7 +1165,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// [정정/취소]
             let RSVN_ORD_ORD_DT:String?
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 -
@@ -1247,7 +1247,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 다음 페이지 조회시 사용
             let CTX_AREA_NK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 -
@@ -1353,7 +1353,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 연속조회키100
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1478,7 +1478,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1662,7 +1662,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// Y/N
             let OVRS_ICLD_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -1746,7 +1746,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 공백입력
             let BSPR_BF_DT_APLY_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1885,7 +1885,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 연속조회검색조건100
             let CTX_AREA_FK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2036,7 +2036,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 연속조회검색조건100
             let CTX_AREA_FK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2152,7 +2152,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 보유종목 코드 ex)000660
             let PDNO:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2240,7 +2240,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 01(외화기준),02(원화기준)
             let FWEX_CTRT_FRCR_DVSN_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2532,7 +2532,7 @@ extension KISAPI.국내주식_주문_계좌 {
             /// 다음조회시 입력
             let CTX_AREA_FK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2636,7 +2636,7 @@ extension KISAPI.국내주식_주문_계좌 {
     }
 }
 // MARK: 퇴직연금
-extension KISAPI.국내주식_주문_계좌_퇴직연금 {
+public extension KISAPI.국내주식_주문_계좌_퇴직연금 {
     /// 퇴직연금 미체결내역[v1_국내주식-033]
     /// ​※ 55번 계좌(DC가입자계좌)의 경우 해당 API 이용이 불가합니다.KIS Developers API의 경우 HTS ID에 반드시 연결되어있어야만 API 신청 및 앱정보 발급이 가능한 서비스로 개발되어서 실물계좌가 아닌 55번 계좌는 API 이용이 불가능한 점 양해 부탁드립니다.
     struct inquiredailyccld : APIITEM, NeedHash {
@@ -2663,7 +2663,7 @@ extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 연속조회키100
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2759,7 +2759,7 @@ extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 주문단가
             let ORD_UNPR:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2824,7 +2824,7 @@ extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 00
             let ACCA_DVSN_CD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2894,7 +2894,7 @@ extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 연속조회키100
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

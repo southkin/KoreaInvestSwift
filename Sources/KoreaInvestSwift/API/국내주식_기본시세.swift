@@ -10,7 +10,7 @@ public extension KISAPI {
     enum 국내주식_기본시세 {
     }
 }
-extension KISAPI.국내주식_기본시세 {
+public extension KISAPI.국내주식_기본시세 {
     /// 주식현재가 시세[v1_국내주식-008]
     /// 주식 현재가 시세 API입니다. 실시간 시세를 원하신다면 웹소켓 API를 활용하세요.※ 종목코드 마스터파일 파이썬 정제코드는 한국투자증권 Github 참고 부탁드립니다.   https://github.com/koreainvestment/open-trading-api/tree/main/stocks_info
     struct inquireprice : APIITEM, NeedHash {
@@ -22,7 +22,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드 (ex 005930 삼성전자)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -239,7 +239,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드 (ex 005930 삼성전자)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -313,7 +313,7 @@ extension KISAPI.국내주식_기본시세 {
             /// '0 : 수정주가미반영 1 : 수정주가반영 * 수정주가는 액면분할/액면병합 등 권리 발생 시 과거 시세를 현재 주가에 맞게 보정한 가격'
             let FID_ORG_ADJ_PRC:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -400,7 +400,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드 (ex 005930 삼성전자)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -626,7 +626,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드 (ex 005930 삼성전자)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -724,7 +724,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목번호 (6자리) ETN의 경우, Q로 시작 (EX. Q500001)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 성공 실패 여부 성공 : 0 실패 : 0외 값
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -923,7 +923,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 0:수정주가 1:원주가
             let FID_ORG_ADJ_PRC:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1082,7 +1082,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 입력시간
             let FID_INPUT_HOUR_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1184,7 +1184,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 1 : 시간외 (Default)
             let FID_HOUR_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1297,7 +1297,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목번호 (6자리) ETN의 경우, Q로 시작 (EX. Q500001)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1423,7 +1423,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 기타 구분 코드
             let FID_ETC_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1528,7 +1528,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 000660
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1698,7 +1698,7 @@ extension KISAPI.국내주식_기본시세 {
             /// J
             let fid_cond_mrkt_div_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1870,7 +1870,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1970,7 +1970,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드
             let fid_input_iscd:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2056,7 +2056,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 조회 종료일자 (ex. 20240220)
             let fid_input_date_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2145,7 +2145,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 0:전체, 1:종가범위연장
             let FID_BLNG_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2220,7 +2220,7 @@ extension KISAPI.국내주식_기본시세 {
             /// Unique key( 11216 )
             let FID_COND_SCR_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2340,7 +2340,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 종목코드
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2464,7 +2464,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 시장구분코드 (주식 J)
             let FID_COND_MRKT_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2675,7 +2675,7 @@ extension KISAPI.국내주식_기본시세 {
             /// 허봉 포함 여부
             let FID_FAKE_TICK_INCU_YN:String?
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

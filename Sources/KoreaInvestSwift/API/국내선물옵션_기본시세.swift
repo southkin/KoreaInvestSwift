@@ -8,7 +8,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 국내선물옵션_기본시세 {}
 }
-extension KISAPI.국내선물옵션_기본시세 {
+public extension KISAPI.국내선물옵션_기본시세 {
     /// 선물옵션 시세[v1_국내선물-006]
     /// 선물옵션 시세 API입니다. ※ 종목코드 마스터파일 파이썬 정제코드는 한국투자증권 Github 참고 부탁드립니다.   https://github.com/koreainvestment/open-trading-api/tree/main/stocks_info
     struct inquireprice : APIITEM, NeedHash {
@@ -20,7 +20,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 종목코드 (예: 101S03)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -205,7 +205,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 종목코드 (예: 101S03)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -383,7 +383,7 @@ extension KISAPI.국내선물옵션_기본시세 {
     /// (지수)선물옵션 기간별시세 데이터(일/주/월/년) 조회 (최대 100건 조회)실전계좌의 경우, 한 번의 호출에 최대 100건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. 모의계좌의 경우, 한 번의 호출에 최대 100건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다.
     struct inquiredailyfuopchartprice : APIITEM {
         
-        var header: [String : String] = .init()
+        public var header: [String : String] = .init()
         
         public struct Request : Codable {
             /// FID 조건 시장 분류 코드
@@ -402,7 +402,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// D:일봉 W:주봉, M:월봉, Y:년봉
             let FID_PERIOD_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -581,7 +581,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 입력 시간 기준으로 이전 시간 조회(HHMMSS) ex) 093000 입력 시, 오전 9시 30분부터 역순으로 분봉 조회 * CM(야간선물), EU(야간옵션)인 경우, 자정 이후 시간은 +24시간으로 입력 ex) 253000 입력 시, 새벽 1시 30분부터 역순으로 분봉 조회
             let FID_INPUT_HOUR_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -718,7 +718,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// F : 지수선물, O : 지수옵션
             let FID_COND_MRKT_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -801,7 +801,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 공백
             let FID_COND_MRKT_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -871,7 +871,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 공백
             let FID_COND_MRKT_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -963,7 +963,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 시장구분코드 (PO: 풋옵션)
             let FID_MRKT_CLS_CODE1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1189,7 +1189,7 @@ extension KISAPI.국내선물옵션_기본시세 {
             /// 공백: KOSPI200 MKI: 미니KOSPI200 WKM: KOSPI200위클리(월) WKI: KOSPI200위클리(목) KQI: KOSDAQ150
             let FID_COND_MRKT_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

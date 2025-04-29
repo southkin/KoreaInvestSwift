@@ -10,7 +10,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 국내주식_업종_기타 {}
 }
-extension KISAPI.국내주식_업종_기타 {
+public extension KISAPI.국내주식_업종_기타 {
     /// 국내주식업종기간별시세(일/주/월/년)[v1_국내주식-021]
     /// 국내주식 업종기간별시세(일/주/월/년) API입니다.실전계좌/모의계좌의 경우, 한 번의 호출에 최대 50건까지 확인 가능합니다.
     struct inquiredailyindexchartprice : APIITEM {
@@ -31,7 +31,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// D:일봉 W:주봉, M:월봉, Y:년봉
             let FID_PERIOD_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 - 응답코드
@@ -156,7 +156,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 공백으로 입력
             let CTX_AREA_FK:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -236,7 +236,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// Y (과거) / N (당일)
             let FID_PW_DATA_INCU_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -357,7 +357,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// FID 대상 제외 구분 코드
             let FID_TRGT_EXLS_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -442,7 +442,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 코스피(0001), 코스닥(1001), 코스피200(2001) ... 포탈 (FAQ : 종목정보 다운로드(국내) - 업종코드 참조)
             let FID_INPUT_ISCD:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -573,7 +573,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 입력 날짜(ex. 20240223)
             let FID_INPUT_DATE_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -706,7 +706,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 시장구분코드에 따라 아래와 같이 입력 시장구분코드(K:거래소) 0:전업종, 1:기타구분, 2:자본금구분 3:상업별구분 시장구분코드(Q:코스닥) 0:전업종, 1:기타구분, 2:벤처구분 3:일반구분 시장구분코드(K2:코스닥) 0:전업종
             let FID_BLNG_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -833,7 +833,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 1:장시작전, 2:장마감
             let fid_mkop_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -929,7 +929,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 시장구분코드 (업종 U)
             let FID_COND_MRKT_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1002,7 +1002,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 시장구분코드 (업종 U)
             let FID_COND_MRKT_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1078,7 +1078,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 시장구분코드 (주식 U)
             let FID_COND_MRKT_DIV_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1152,7 +1152,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 공백 : 전체
             let FID_DIV_CLS_CODE1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1257,7 +1257,7 @@ extension KISAPI.국내주식_업종_기타 {
             /// 공백
             let FID_INPUT_SRNO:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1346,7 +1346,7 @@ extension KISAPI.국내주식_업종_기타 {
                 case tr_id, tr_cont, gt_uid
             }
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

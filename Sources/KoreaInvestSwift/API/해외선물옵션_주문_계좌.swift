@@ -9,7 +9,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 해외선물옵션_주문_계좌 {}
 }
-extension KISAPI.해외선물옵션_주문_계좌 {
+public extension KISAPI.해외선물옵션_주문_계좌 {
     /// 해외선물옵션 주문 [v1_해외선물-001]
     /// 해외선물옵션 주문 API 입니다.※ POST API의 경우 BODY값의 key값들을 대문자로 작성하셔야 합니다.   (EX. "CANO" : "12345678", "ACNT_PRDT_CD": "01",...)※ 종목코드 마스터파일 파이썬 정제코드는 한국투자증권 Github 참고 부탁드립니다.   https://github.com/koreainvestment/open-trading-api/tree/main/stocks_info
     struct order : APIITEM, NeedHash {
@@ -61,7 +61,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// N
             let FM_HDGE_ORD_SCRN_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 -
@@ -144,7 +144,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// OTFM3003U(해외선물옵션주문취소)만 사용 ※ FM_MKPR_CVSN_YN 항목에 'Y'로 설정하여 취소주문을 접수할 경우, 주문 취소확인이 들어오면 원장에서 시장가주문을 하나 또 내줌
             let FM_MKPR_CVSN_YN:String?
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
             let rt_cd: String
             /// 응답코드 -
@@ -220,7 +220,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 연속조회키200
             let CTX_AREA_NK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -349,7 +349,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 연속조회키100
             let CTX_AREA_NK100:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -443,7 +443,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// N
             let ECIS_RSVN_ORD_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -532,7 +532,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 연속조회키200
             let CTX_AREA_NK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -680,7 +680,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 연속조회키200
             let CTX_AREA_NK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -784,7 +784,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 조회일자
             let INQR_DT:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -906,7 +906,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 연속조회키200
             let CTX_AREA_NK200:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1036,7 +1036,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 공란(Default)
             let PWD_CHK_YN:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1128,7 +1128,7 @@ extension KISAPI.해외선물옵션_주문_계좌 {
             /// 조회일자
             let INQR_DT:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -

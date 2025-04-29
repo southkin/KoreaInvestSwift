@@ -9,7 +9,7 @@ import FullyRESTful
 public extension KISAPI {
     enum 국내주식_순위분석 {}
 }
-extension KISAPI.국내주식_순위분석 {
+public extension KISAPI.국내주식_순위분석 {
     /// 거래량순위[v1_국내주식-047]
     /// 국내주식 거래량순위 API입니다. 한국투자 HTS(eFriend Plus) > [0171] 거래량 순위 화면의 기능을 API로 개발한 사항으로, 해당 화면을 참고하시면 기능을 이해하기 쉽습니다.최대 30건 확인 가능하며, 다음 조회가 불가합니다.+30건 이상의 목록 조회가 필요한 경우, 대안으로 종목조건검색 API를 이용해서 원하는 종목 100개까지 검색할 수 있는 기능을 제공하고 있습니다.종목조건검색 API는 HTS(efriend Plus) [0110] 조건검색에서 등록 및 서버저장한 나의 조건 목록을 확인할 수 있는 API로,HTS [0110]에서 여러가지 조건을 설정할 수 있는데, 그 중 거래량 순위(ex. 0봉전 거래량 상위순 100종목) 에 대해서도 설정해서 종목을 검색할 수 있습니다.자세한 사용 방법은 공지사항 - [조건검색 필독] 조건검색 API 이용안내 참고 부탁드립니다.
     struct volumerank : APIITEM, NeedHash {
@@ -48,7 +48,7 @@ extension KISAPI.국내주식_순위분석 {
             /// ""(공란) 입력
             let FID_INPUT_DATE_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -177,7 +177,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (비율 ~)
             let fid_rsfl_rate1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -312,7 +312,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0:전체
             let fid_trgt_exls_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -423,7 +423,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (거래량 ~)
             let fid_vol_cnt:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -532,7 +532,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0 : 전체
             let fid_trgt_exls_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -664,7 +664,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (~ 가격)
             let fid_input_price_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -761,7 +761,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (~ 가격)
             let fid_input_price_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -873,7 +873,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (~ 가격)
             let fid_input_price_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -980,7 +980,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 입력값 없을때 전체 (거래량 ~)
             let fid_vol_cnt:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1093,7 +1093,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0 : 전체
             let fid_trgt_exls_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1208,7 +1208,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0 : 전체
             let fid_trgt_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1311,7 +1311,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 순위검색 입력값(1: 1위부터, 10:10위부터)
             let fid_input_cnt_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1415,7 +1415,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0:장전예상1:장마감예상
             let fid_mkop_cls_code:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1529,7 +1529,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 가격 ~
             let fid_aply_rang_prc_1:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1637,7 +1637,7 @@ extension KISAPI.국내주식_순위분석 {
             /// ~ 가격
             let fid_aply_rang_prc_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1753,7 +1753,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 거래량 ~
             let fid_vol_cnt:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1853,7 +1853,7 @@ extension KISAPI.국내주식_순위분석 {
             /// ~ 가격
             let FID_APLY_RANG_PRC_2:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -1946,7 +1946,7 @@ extension KISAPI.국내주식_순위분석 {
             /// '(융자)0:잔고비율 상위, 1: 잔고수량 상위, 2: 잔고금액 상위, 3: 잔고비율 증가상위, 4: 잔고비율 감소상위 (대주)5:잔고비율 상위, 6: 잔고수량 상위, 7: 잔고금액 상위, 8: 잔고비율 증가상위, 9: 잔고비율 감소상위 '
             let FID_RANK_SORT_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2059,7 +2059,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 0:전체, 1:결산배당, 2:중간배당
             let GB4:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2151,7 +2151,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 공백 입력
             let FID_TRGT_EXLS_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2284,7 +2284,7 @@ extension KISAPI.국내주식_순위분석 {
             /// 공백
             let FID_TRGT_EXLS_CLS_CODE:String
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
@@ -2388,7 +2388,7 @@ extension KISAPI.국내주식_순위분석 {
                 case tr_id, tr_cont, gt_uid
             }
         }
-        struct Response: Codable {
+        public struct Response: Codable {
             /// 성공 실패 여부 -
             let rt_cd: String
             /// 응답코드 -
