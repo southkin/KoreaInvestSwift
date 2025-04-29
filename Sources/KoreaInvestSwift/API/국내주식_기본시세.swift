@@ -6,7 +6,7 @@
 //
 import FullyRESTful
 
-extension KISAPI {
+public extension KISAPI {
     enum 국내주식_기본시세 {
     }
 }

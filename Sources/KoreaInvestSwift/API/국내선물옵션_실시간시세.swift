@@ -7,7 +7,7 @@
 
 import FullyRESTful
 
-extension KISAPI {
+public extension KISAPI {
     enum 국내선물옵션_실시간시세 {}
 }
 extension KISAPI.국내선물옵션_실시간시세 {

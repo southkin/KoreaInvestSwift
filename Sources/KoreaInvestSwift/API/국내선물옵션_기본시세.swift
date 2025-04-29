@@ -5,7 +5,7 @@
 //  Created by kin on 4/10/25.
 //
 import FullyRESTful
-extension KISAPI {
+public extension KISAPI {
     enum 국내선물옵션_기본시세 {}
 }
 extension KISAPI.국내선물옵션_기본시세 {

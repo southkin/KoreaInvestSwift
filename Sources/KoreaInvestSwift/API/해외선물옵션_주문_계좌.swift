@@ -6,7 +6,7 @@
 //
 
 import FullyRESTful
-extension KISAPI {
+public extension KISAPI {
     enum 해외선물옵션_주문_계좌 {}
 }
 extension KISAPI.해외선물옵션_주문_계좌 {

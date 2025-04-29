@@ -7,7 +7,7 @@
 
 import FullyRESTful
 
-extension KISAPI {
+public extension KISAPI {
     enum 국내주식_시세분석 {}
 }
 extension KISAPI.국내주식_시세분석 {

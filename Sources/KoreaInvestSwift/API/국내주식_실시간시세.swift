@@ -7,7 +7,7 @@
 import FullyRESTful
 import Foundation
 
-extension KISAPI {
+public extension KISAPI {
     enum 국내주식_실시간시세{}
 }
 extension KISAPI.국내주식_실시간시세 {

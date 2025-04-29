@@ -5,7 +5,7 @@
 //  Created by kin on 3/25/25.
 //
 import FullyRESTful
-extension KISAPI {
+public extension KISAPI {
     enum 국내주식_주문_계좌 {}
     enum 국내주식_주문_계좌_퇴직연금 {}
 }
