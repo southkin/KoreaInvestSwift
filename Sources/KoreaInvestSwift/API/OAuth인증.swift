@@ -48,8 +48,8 @@ public extension KISAPI.OAuth인증 {
         public let path = "/oauth2/Approval"
         public var customHeader: [String : String]?
         init() throws {
-            self.server = try KISManager.getCurrentServer()
-            self.customHeader = KISManager.headerPick(names: [
+            self.server = try KISManager.currentManager!.getCurrentServer()
+            self.customHeader = KISManager.currentManager!.headerPick(names: [
             ])
             self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
@@ -87,8 +87,8 @@ public extension KISAPI.OAuth인증 {
         public let path = "/uapi/hashkey"
         public var customHeader: [String : String]?
         init() throws {
-            self.server = try KISManager.getCurrentServer()
-            self.customHeader = KISManager.headerPick(names: [
+            self.server = try KISManager.currentManager!.getCurrentServer()
+            self.customHeader = KISManager.currentManager!.headerPick(names: [
                 "appkey",
                 "appsecret"
             ])
@@ -151,8 +151,8 @@ public extension KISAPI.OAuth인증 {
         public let path = "/oauth2/tokenP"
         public var customHeader: [String : String]?
         init() throws {
-            self.server = try KISManager.getCurrentServer()
-            self.customHeader = KISManager.headerPick(names: [
+            self.server = try KISManager.currentManager!.getCurrentServer()
+            self.customHeader = KISManager.currentManager!.headerPick(names: [
             ])
             self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }
@@ -188,8 +188,8 @@ public extension KISAPI.OAuth인증 {
         public let path = "/oauth2/revokeP"
         public var customHeader: [String : String]?
         init() throws {
-            self.server = try KISManager.getCurrentServer()
-            self.customHeader = KISManager.headerPick(names: [
+            self.server = try KISManager.currentManager!.getCurrentServer()
+            self.customHeader = KISManager.currentManager!.headerPick(names: [
             ])
             self.customHeader?["Content-Type"] = "application/json; charset=utf-8"
         }

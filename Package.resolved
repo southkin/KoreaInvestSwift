@@ -6,8 +6,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/southkin/FullyRESTful.git",
       "state" : {
-        "revision" : "27743ca9c256a055c16ec0b8ab966223a589720f",
-        "version" : "3.1.2"
+        "revision" : "fef376f0fc8e11375b13b66128a70e0d2bd4a606",
+        "version" : "3.1.4"
+      }
+    },
+    {
+      "identity" : "kinkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/southkin/KinKit",
+      "state" : {
+        "revision" : "664edbd3842dc7edd56180a76eeba201c6f84c4a",
+        "version" : "1.0.1"
       }
     }
   ],

@@ -6,10 +6,10 @@ import FullyRESTful
 
 import Combine
 
-enum TargetServer {
+public enum TargetServer {
     case 실전서버
     case 모의투자서버
-    var server:ServerInfo {
+    public var server:ServerInfo {
         switch self {
         case .모의투자서버:
             return .init(domain: "https://openapivts.koreainvestment.com:29443", defaultHeader: ["Content-Type": "application/json; utf-8"])
@@ -18,7 +18,7 @@ enum TargetServer {
             
         }
     }
-    var websocketServer:ServerInfo {
+    public var websocketServer:ServerInfo {
         switch self {
         case .모의투자서버:
             return .init(domain: "ws://ops.koreainvestment.com:21000", defaultHeader: ["Content-Type": "application/json; utf-8"])
@@ -27,7 +27,7 @@ enum TargetServer {
             
         }
     }
-    func getValue<T>(실전서버:T, 모의투자서버:T) -> T {
+    public func getValue<T>(실전서버:T, 모의투자서버:T) -> T {
         switch self {
         case .모의투자서버:
             return 모의투자서버
@@ -70,7 +70,7 @@ public class KISManager {
         ///접속 단말 공인 IP
         ///[법인 필수] 사용자(회원)의 IP Address
         var ip_addr:String?
-        init(account_id: String, appkey: String, appsecret: String, personalseckey: String? = nil, custtype: String? = nil, seq_no: String? = nil, mac_address: String? = nil, phone_number: String? = nil, ip_addr: String? = nil) {
+        public init(account_id: String, appkey: String, appsecret: String, personalseckey: String? = nil, custtype: String? = nil, seq_no: String? = nil, mac_address: String? = nil, phone_number: String? = nil, ip_addr: String? = nil) {
             self.account_id = account_id
             self.CANO = account_id.components(separatedBy: "-")[0]
             self.ACNT_PRDT_CD = account_id.components(separatedBy: "-")[1]
@@ -90,38 +90,36 @@ public class KISManager {
     var accessToken:AccessToken?
     var websocketAccessToken:AccessToken?
     @discardableResult
-    init(
+    public init(
         targetServer:TargetServer,
         initInfo:InitInfo
     ) throws {
         self.targetServer = targetServer
         self.baseHeader = initInfo.header ?? [:]
-        guard let _ = KISManager.currentManager else {
+        self.accessToken = UserDefaults.standard.string(forKey: "accessToken")?.makeObj()
+//        guard let _ = KISManager.currentManager else {
             KISManager.currentManager = self
-            return
-        }
-        print("KISManager 는 하나의 인스턴스만 사용하여야 합니다.")
-        throw NSError(domain: "KISManager", code: -1, userInfo: nil)
+//            return
+//        }
+//        print("KISManager 는 하나의 인스턴스만 사용하여야 합니다.")
+//        throw NSError(domain: "KISManager", code: -1, userInfo: nil)
     }
-    static func getCurrentServer() throws -> ServerInfo {
-        guard let server = KISManager.currentManager?.targetServer.server else {
-            throw NSError(domain: "", code: -1, userInfo: nil)
-        }
-        return server
+    public func getCurrentServer() throws -> ServerInfo {
+        return targetServer.server
     }
-    static func getValueForCurrentTargetServer<VALUE>(실전서버:VALUE, 모의투자서버:VALUE) -> VALUE {
-        KISManager.currentManager?.targetServer.getValue(실전서버: 실전서버, 모의투자서버: 모의투자서버) ?? 모의투자서버
+    public func getValueForCurrentTargetServer<VALUE>(실전서버:VALUE, 모의투자서버:VALUE) -> VALUE {
+        targetServer.getValue(실전서버: 실전서버, 모의투자서버: 모의투자서버) ?? 모의투자서버
     }
-    static func headerPick(names:[String]) -> [String: String] {
+    func headerPick(names:[String]) -> [String: String] {
         var newList:[String: String] = [:]
-        if let header = KISManager.currentManager?.baseHeader {
-            names.forEach {
-                newList[$0] = header[$0]
-            }
+        let header = baseHeader
+        names.forEach {
+            newList[$0] = header[$0]
         }
+        
         return newList
     }
-    struct AccessToken {
+    struct AccessToken : Codable {
         let token:String
         let rawToken:String
         let tokenType:String
@@ -130,53 +128,54 @@ public class KISManager {
                 Date() >= expiresAt
             }
     }
-    static func getAccessToken() async -> AccessToken? {
-        guard let manager = KISManager.currentManager,
-              let appkey = manager.baseHeader["appkey"],
-              let appsecret = manager.baseHeader["appsecret"]
+    func getAccessToken() async -> AccessToken? {
+        guard
+            let appkey = baseHeader["appkey"],
+            let appsecret = baseHeader["appsecret"]
         else {
             return nil
         }
-        if let accessToken = manager.accessToken, !accessToken.isExpired {
+        if let accessToken = accessToken, !accessToken.isExpired {
             return accessToken
         }
         let result = try? await KISAPI.OAuth인증.tokenP().request(param: .init(grant_type: "client_credentials", appkey: appkey, appsecret: appsecret))?.model
         guard let result else {
             return nil
         }
-        manager.accessToken = .init(
+        accessToken = .init(
             token: "\(result.token_type) \(result.access_token)",
             rawToken: result.access_token,
             tokenType: result.token_type,
             expiresAt: Date().addingTimeInterval(TimeInterval(result.expires_in)))
-        return manager.accessToken
+        UserDefaults.standard.set(accessToken?.JSONString, forKey: "accessToken")
+        return accessToken
     }
-    static func getWebsocketAccessToken() async -> AccessToken? {
-        guard let manager = KISManager.currentManager,
-              let _ = manager.baseHeader["appkey"],
-              let _ = manager.baseHeader["appsecret"]
+    func getWebsocketAccessToken() async -> AccessToken? {
+        guard
+              let _ = baseHeader["appkey"],
+              let _ = baseHeader["appsecret"]
         else {
             return nil
         }
-        if let accessToken = manager.websocketAccessToken, !accessToken.isExpired {
+        if let accessToken = websocketAccessToken, !accessToken.isExpired {
             return accessToken
         }
         let result = try? await KISAPI.OAuth인증.Approval().request(param: .init())?.model
         guard let result else {
             return nil
         }
-        manager.websocketAccessToken = .init(
+        websocketAccessToken = .init(
             token: result.approval_key,
             rawToken: result.approval_key,
             tokenType: "",
             expiresAt: Date().addingTimeInterval(60*60*23))
-        return manager.websocketAccessToken
+        return websocketAccessToken
     }
-    static func getCANO() -> String {
+    public func getCANO() -> String {
         let info = headerPick(names: ["CANO"])
         return info["CANO"] ?? ""
     }
-    static func ACNT_PRDT_CD() -> String {
+    public func ACNT_PRDT_CD() -> String {
         let info = headerPick(names: ["ACNT_PRDT_CD"])
         return info["ACNT_PRDT_CD"] ?? ""
     }

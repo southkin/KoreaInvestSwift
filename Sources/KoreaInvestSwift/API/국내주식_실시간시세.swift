@@ -35,8 +35,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -187,8 +187,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -363,8 +363,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -469,8 +469,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -581,8 +581,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -695,8 +695,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -925,8 +925,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1136,8 +1136,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1213,8 +1213,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1337,8 +1337,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1461,8 +1461,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1585,8 +1585,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1710,8 +1710,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1835,8 +1835,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1959,8 +1959,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2083,8 +2083,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2207,8 +2207,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2292,8 +2292,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -2435,8 +2435,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -2616,8 +2616,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -2689,8 +2689,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -2832,8 +2832,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3013,8 +3013,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3086,8 +3086,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3293,8 +3293,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3500,8 +3500,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3573,8 +3573,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3716,8 +3716,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -3787,8 +3787,8 @@ public extension KISAPI.국내주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""

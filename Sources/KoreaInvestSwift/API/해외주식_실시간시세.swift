@@ -34,8 +34,8 @@ public extension KISAPI.해외주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -140,8 +140,8 @@ public extension KISAPI.해외주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -226,8 +226,8 @@ public extension KISAPI.해외주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -238,7 +238,7 @@ public extension KISAPI.해외주식_실시간시세 {
         struct Body : Codable {
             /// 거래ID
             /// [실전투자] H0GSCNI0 : 실시간 해외주식 체결통보 [모의투자] H0GSCNI9 : 실시간 해외주식 체결통보
-            var tr_id: String = KISManager.getValueForCurrentTargetServer(실전서버: "H0GSCNI0", 모의투자서버: "H0GSCNI9")
+            var tr_id: String = KISManager.currentManager!.getValueForCurrentTargetServer(실전서버: "H0GSCNI0", 모의투자서버: "H0GSCNI9")
             /// HTSID
             /// HTSID
             let tr_key: String
@@ -333,8 +333,8 @@ public extension KISAPI.해외주식_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""

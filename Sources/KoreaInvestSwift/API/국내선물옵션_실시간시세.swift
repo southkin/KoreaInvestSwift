@@ -35,8 +35,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -191,8 +191,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -322,8 +322,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -334,7 +334,7 @@ public extension KISAPI.국내선물옵션_실시간시세 {
         struct Body : Codable {
             /// 거래ID
             /// [실전투자] H0IFCNI0 : 실시간 선물옵션 체결통보 [모의투자] H0IFCNI9 : 실시간 선물옵션 체결통보
-            var tr_id: String = KISManager.getValueForCurrentTargetServer(실전서버: "H0IFCNI0", 모의투자서버: "H0IFCNI9")
+            var tr_id: String = KISManager.currentManager!.getValueForCurrentTargetServer(실전서버: "H0IFCNI0", 모의투자서버: "H0IFCNI9")
             /// 코드
             /// 예:101S12
             let tr_key: String
@@ -425,8 +425,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -596,8 +596,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -727,8 +727,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -882,8 +882,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1013,8 +1013,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1166,8 +1166,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1357,8 +1357,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1518,8 +1518,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -1749,8 +1749,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1871,8 +1871,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -1994,8 +1994,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2117,8 +2117,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2240,8 +2240,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2362,8 +2362,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2485,8 +2485,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2608,8 +2608,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",
@@ -2731,8 +2731,8 @@ public extension KISAPI.국내선물옵션_실시간시세 {
                 case gt_uid
             }
             init() async {
-                self.authorization = await KISManager.getAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.authorization = await KISManager.currentManager?.getAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "appkey",
                     "appsecret",
                     "personalseckey",

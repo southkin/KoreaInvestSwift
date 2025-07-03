@@ -34,8 +34,8 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -142,8 +142,8 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -268,8 +268,8 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
@@ -395,8 +395,8 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case content_type = "content-type"
             }
             init(tr_type: String) async {
-                self.approval_key = await KISManager.getWebsocketAccessToken()?.token ?? ""
-                var headers = KISManager.headerPick(names: [
+                self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
+                var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
                 ])
                 self.custtype = headers["custtype"] ?? ""
