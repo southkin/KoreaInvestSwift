@@ -3,7 +3,7 @@
 
 import Foundation
 import FullyRESTful
-
+import KinKit
 import Combine
 
 public enum TargetServer {
@@ -193,9 +193,13 @@ public extension APIITEM {
         return ""
     }
 }
+public protocol PagingInfo : Codable {
+    var CTX_AREA_FK100:String { get set }
+    var CTX_AREA_NK100:String { get set }
+}
 public protocol Pagingable {
-    var hasNext: Bool { get set }
-    var reqItem: any Codable { get set }
+    var hasNext:Bool { get set }
+    var reqItem: (any PagingInfo)? { get set }
 }
 public extension APIITEM {
     mutating func run(param:RequestModel) async throws -> ResponseModel? {
@@ -210,9 +214,14 @@ public extension APIITEM {
         else {
             throw NSError(domain: "KISManager", code: 0, userInfo: nil)
         }
-        if var pagingable = self as? Pagingable {
+        if var pagingable = self as? Pagingable,
+           var pagingInfo = param as? PagingInfo,
+           var pagingableObj = obj as? PagingInfo
+        {
+            pagingInfo.CTX_AREA_FK100 = pagingableObj.CTX_AREA_FK100
+            pagingInfo.CTX_AREA_NK100 = pagingableObj.CTX_AREA_NK100
             pagingable.hasNext = response.allHeaderFields["tr_cont"] as? String == "M"
-            pagingable.reqItem = param as! Codable
+            pagingable.reqItem = pagingInfo
         }
         return obj
     }
@@ -234,10 +243,17 @@ public extension APIITEM {
             guard let response = result?.rawResponse,
                   let obj:ResponseModel = result?.model
             else {
-                print("뭐라그래야해? 암튼 실패")
                 throw NSError(domain: "KISManager", code: 0, userInfo: nil)
             }
-            pagingable.hasNext = response.allHeaderFields["tr_cont"] as? String == "M"
+            if var pagingable = self as? Pagingable,
+               var pagingInfo = reqParam as? PagingInfo,
+               var pagingableObj = obj as? PagingInfo
+            {
+                pagingInfo.CTX_AREA_FK100 = pagingableObj.CTX_AREA_FK100
+                pagingInfo.CTX_AREA_NK100 = pagingableObj.CTX_AREA_NK100
+                pagingable.hasNext = response.allHeaderFields["tr_cont"] as? String == "M"
+                pagingable.reqItem = pagingInfo
+            }
             return obj
         }
         return nil

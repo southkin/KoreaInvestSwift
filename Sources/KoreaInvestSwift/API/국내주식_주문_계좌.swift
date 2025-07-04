@@ -767,7 +767,12 @@ public extension KISAPI.국내주식_주문_계좌 {
 
     /// 주식잔고조회[v1_국내주식-006]
     /// 주식 잔고조회 API입니다. 실전계좌의 경우, 한 번의 호출에 최대 50건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. 모의계좌의 경우, 한 번의 호출에 최대 20건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. * 당일 전량매도한 잔고도 보유수량 0으로 보여질 수 있으나, 해당 보유수량 0인 잔고는 최종 D-2일 이후에는 잔고에서 사라집니다.
-    public struct inquirebalance : APIITEM, NeedHash {
+    public struct inquirebalance : APIITEM, NeedHash, Pagingable {
+        
+        public var hasNext: Bool = false
+        
+        public var reqItem: (any PagingInfo)?
+        
         public struct Request : Codable {
             /// 종합계좌번호
             /// 계좌번호 체계(8-2)의 앞 8자리
@@ -802,7 +807,7 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 연속조회키100
             /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)
             public let CTX_AREA_NK100:String
-            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, AFHR_FLPR_YN: String, OFL_YN: String, INQR_DVSN: String, UNPR_DVSN: String, FUND_STTL_ICLD_YN: String, FNCG_AMT_AUTO_RDPT_YN: String, PRCS_DVSN: String, CTX_AREA_FK100: String, CTX_AREA_NK100: String) {
+            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, AFHR_FLPR_YN: String, OFL_YN: String, INQR_DVSN: String, UNPR_DVSN: String, FUND_STTL_ICLD_YN: String, FNCG_AMT_AUTO_RDPT_YN: String, PRCS_DVSN: String, CTX_AREA_FK100: String = "", CTX_AREA_NK100: String = "") {
                 self.CANO = CANO ?? KISManager.currentManager!.getCANO()
                 self.ACNT_PRDT_CD = ACNT_PRDT_CD ?? KISManager.currentManager!.ACNT_PRDT_CD()
                 self.AFHR_FLPR_YN = AFHR_FLPR_YN
@@ -816,142 +821,142 @@ public extension KISAPI.국내주식_주문_계좌 {
                 self.CTX_AREA_NK100 = CTX_AREA_NK100
             }
         }
-        public struct Response: Codable {
+        public struct Response: Codable, PagingInfo {
             /// 성공 실패 여부 - 0 : 성공 0 이외의 값 : 실패
-            let rt_cd: String
+            public let rt_cd: String
             /// 응답코드 - 응답코드
-            let msg_cd: String
+            public let msg_cd: String
             /// 응답메세지 - 응답메세지
-            let msg1: String
+            public let msg1: String
             /// 연속조회검색조건100 -
-            let ctx_area_fk100: String
+            public var CTX_AREA_FK100: String
             /// 연속조회키100 -
-            let ctx_area_nk100: String
+            public var CTX_AREA_NK100: String
             /// 응답상세1 : Object Array
             /// Array
-            let output1: [Output1]
+            public let output1: [Output1]
             /// 응답상세2 : Object Array
             /// Array
-            let output2: [Output2]
+            public let output2: [Output2]
         }
         public struct Output1 : Codable {
             /// 상품번호
             /// 종목번호(뒷 6자리)
-            let pdno:String
+            public let pdno:String
             /// 상품명
             /// 종목명
-            let prdt_name:String
+            public let prdt_name:String
             /// 매매구분명
             /// 매수매도구분
-            let trad_dvsn_name:String
+            public let trad_dvsn_name:String
             /// 전일매수수량
-            let bfdy_buy_qty:String
+            public let bfdy_buy_qty:String
             /// 전일매도수량
-            let bfdy_sll_qty:String
+            public let bfdy_sll_qty:String
             /// 금일매수수량
-            let thdt_buyqty:String
+            public let thdt_buyqty:String
             /// 금일매도수량
-            let thdt_sll_qty:String
+            public let thdt_sll_qty:String
             /// 보유수량
-            let hldg_qty:String
+            public let hldg_qty:String
             /// 주문가능수량
-            let ord_psbl_qty:String
+            public let ord_psbl_qty:String
             /// 매입평균가격
             /// 매입금액 / 보유수량
-            let pchs_avg_pric:String
+            public let pchs_avg_pric:String
             /// 매입금액
-            let pchs_amt:String
+            public let pchs_amt:String
             /// 현재가
-            let prpr:String
+            public let prpr:String
             /// 평가금액
-            let evlu_amt:String
+            public let evlu_amt:String
             /// 평가손익금액
             /// 평가금액 - 매입금액
-            let evlu_pfls_amt:String
+            public let evlu_pfls_amt:String
             /// 평가손익율
-            let evlu_pfls_rt:String
+            public let evlu_pfls_rt:String
             /// 평가수익율
             /// 미사용항목(0으로 출력)
-            let evlu_erng_rt:String
+            public let evlu_erng_rt:String
             /// 대출일자
             /// INQR_DVSN(조회구분)을 01(대출일별)로 설정해야 값이 나옴
-            let loan_dt:String
+            public let loan_dt:String
             /// 대출금액
-            let loan_amt:String
+            public let loan_amt:String
             /// 대주매각대금
-            let stln_slng_chgs:String
+            public let stln_slng_chgs:String
             /// 만기일자
-            let expd_dt:String
+            public let expd_dt:String
             /// 등락율
-            let fltt_rt:String
+            public let fltt_rt:String
             /// 전일대비증감
-            let bfdy_cprs_icdc:String
+            public let bfdy_cprs_icdc:String
             /// 종목증거금율명
-            let item_mgna_rt_name:String
+            public let item_mgna_rt_name:String
             /// 보증금율명
-            let grta_rt_name:String
+            public let grta_rt_name:String
             /// 대용가격
             /// 증권매매의 위탁보증금으로서 현금 대신에 사용되는 유가증권 가격
-            let sbst_pric:String
+            public let sbst_pric:String
             /// 주식대출단가
-            let stck_loan_unpr:String
+            public let stck_loan_unpr:String
         }
         public struct Output2 : Codable {
             /// 예수금총금액
             /// 예수금
-            let dnca_tot_amt:String
+            public let dnca_tot_amt:String
             /// 익일정산금액
             /// D+1 예수금
-            let nxdy_excc_amt:String
+            public let nxdy_excc_amt:String
             /// 가수도정산금액
             /// D+2 예수금
-            let prvs_rcdl_excc_amt:String
+            public let prvs_rcdl_excc_amt:String
             /// CMA평가금액
-            let cma_evlu_amt:String
+            public let cma_evlu_amt:String
             /// 전일매수금액
-            let bfdy_buy_amt:String
+            public let bfdy_buy_amt:String
             /// 금일매수금액
-            let thdt_buy_amt:String
+            public let thdt_buy_amt:String
             /// 익일자동상환금액
-            let nxdy_auto_rdpt_amt:String
+            public let nxdy_auto_rdpt_amt:String
             /// 전일매도금액
-            let bfdy_sll_amt:String
+            public let bfdy_sll_amt:String
             /// 금일매도금액
-            let thdt_sll_amt:String
+            public let thdt_sll_amt:String
             /// D+2자동상환금액
-            let d2_auto_rdpt_amt:String
+            public let d2_auto_rdpt_amt:String
             /// 전일제비용금액
-            let bfdy_tlex_amt:String
+            public let bfdy_tlex_amt:String
             /// 금일제비용금액
-            let thdt_tlex_amt:String
+            public let thdt_tlex_amt:String
             /// 총대출금액
-            let tot_loan_amt:String
+            public let tot_loan_amt:String
             /// 유가평가금액
-            let scts_evlu_amt:String
+            public let scts_evlu_amt:String
             /// 총평가금액
             /// 유가증권 평가금액 합계금액 + D+2 예수금
-            let tot_evlu_amt:String
+            public let tot_evlu_amt:String
             /// 순자산금액
-            let nass_amt:String
+            public let nass_amt:String
             /// 융자금자동상환여부
             /// 보유현금에 대한 융자금만 차감여부 신용융자 매수체결 시점에서는 융자비율을 매매대금 100%로 계산 하였다가 수도결제일에 보증금에 해당하는 금액을 고객의 현금으로 충당하여 융자금을 감소시키는 업무
-            let fncg_gld_auto_rdpt_yn:String
+            public let fncg_gld_auto_rdpt_yn:String
             /// 매입금액합계금액
-            let pchs_amt_smtl_amt:String
+            public let pchs_amt_smtl_amt:String
             /// 평가금액합계금액
             /// 유가증권 평가금액 합계금액
-            let evlu_amt_smtl_amt:String
+            public let evlu_amt_smtl_amt:String
             /// 평가손익합계금액
-            let evlu_pfls_smtl_amt:String
+            public let evlu_pfls_smtl_amt:String
             /// 총대주매각대금
-            let tot_stln_slng_chgs:String
+            public let tot_stln_slng_chgs:String
             /// 전일총자산평가금액
-            let bfdy_tot_asst_evlu_amt:String
+            public let bfdy_tot_asst_evlu_amt:String
             /// 자산증감액
-            let asst_icdc_amt:String
+            public let asst_icdc_amt:String
             /// 자산증감수익율
             /// 데이터 미제공
-            let asst_icdc_erng_rt:String
+            public let asst_icdc_erng_rt:String
         }
         public let requestModel = Request.self
         public let responseModel = Response.self

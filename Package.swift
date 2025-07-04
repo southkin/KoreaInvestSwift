@@ -15,12 +15,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/southkin/FullyRESTful.git", from: "3.0.0"),
+        .package(url: "https://github.com/southkin/kinkit.git", from: "1.0.0"),
 //        .package(url: "https://github.com/southkin/FullyRESTful.git", branch: "main")
     ],
     targets: [
         .target(
             name: "KoreaInvestSwift", dependencies: [
-                .product(name: "FullyRESTful", package: "FullyRESTful")
+                .product(name: "FullyRESTful", package: "FullyRESTful"),
+                .product(name: "KinKit", package: "KinKit"),
             ]),
         .testTarget(
             name: "KoreaInvestSwiftTests",
