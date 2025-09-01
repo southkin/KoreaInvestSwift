@@ -16,7 +16,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/southkin/FullyRESTful.git", from: "3.0.0"),
         .package(url: "https://github.com/southkin/kinkit.git", from: "1.0.0"),
-        .package(url: "https://github.com/southkin/HasLazyServer.git", branch: "main"),
+        .package(url: "https://github.com/southkin/HasLazyServer.git", from: "1.0.0"),
         .package(url: "https://github.com/southkin/CanSubscribe.git", from: "2.0.0")
 //        .package(url: "https://github.com/southkin/FullyRESTful.git", branch: "main")
     ],

@@ -1,22 +1,40 @@
 {
-  "originHash" : "4141baa794cf8bec9d03a6b8485756e34cb9e399bf8c203a218b3252aa4463b6",
+  "originHash" : "70b066fc3ea916d8005cf1ae353167428dcdbbeb60d29406dc78cc3e5d632021",
   "pins" : [
+    {
+      "identity" : "cansubscribe",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/southkin/CanSubscribe.git",
+      "state" : {
+        "revision" : "f92da1aacc6326bc99aa85aa6489ec07171dbab5",
+        "version" : "2.2.0"
+      }
+    },
     {
       "identity" : "fullyrestful",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/southkin/FullyRESTful.git",
       "state" : {
-        "revision" : "fef376f0fc8e11375b13b66128a70e0d2bd4a606",
-        "version" : "3.1.4"
+        "revision" : "ac769c1d5dd324ed227ff770a9f2b371f0f67808",
+        "version" : "3.1.5"
+      }
+    },
+    {
+      "identity" : "haslazyserver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/southkin/HasLazyServer.git",
+      "state" : {
+        "revision" : "5f2df22222a221c599834cc22d795cbdd9de534b",
+        "version" : "1.0.1"
       }
     },
     {
       "identity" : "kinkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/southkin/KinKit",
+      "location" : "https://github.com/southkin/kinkit.git",
       "state" : {
-        "revision" : "664edbd3842dc7edd56180a76eeba201c6f84c4a",
-        "version" : "1.0.1"
+        "revision" : "c19ad61ac615cc6bf0314ad41fe2fd21329dc763",
+        "version" : "1.0.5"
       }
     }
   ],
