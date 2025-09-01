@@ -1990,7 +1990,7 @@ public extension KISAPI.국내주식_종목정보 {
             let CTX_AREA_FK200:String
             /// 연속조회키100
             /// 미입력 (다음조회 불가)
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -

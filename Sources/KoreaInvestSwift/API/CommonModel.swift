@@ -5,7 +5,7 @@
 //  Created by kin on 3/29/25.
 //
 
-enum EXCG_ID_DVSN_CD_ENUM:String, Codable {
+public enum EXCG_ID_DVSN_CD_ENUM:String, Codable {
     case 한국거래소 = "KRX"
     case 넥스트레이드 = "NXT"
 }

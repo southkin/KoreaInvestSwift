@@ -46,7 +46,7 @@ public extension KISAPI.국내주식_기본시세 {
             /// 신 고가 저가 구분 코드
             public let new_hgpr_lwpr_cls_code:String?
             /// 업종 한글 종목명
-            public let bstp_kor_isnm:String
+            public let bstp_kor_isnm:String?
             /// 임시 정지 여부
             public let temp_stop_yn:String
             /// 시가 범위 연장 여부
@@ -1008,11 +1008,11 @@ public extension KISAPI.국내주식_기본시세 {
             /// 13(8.4)
             let itewhol_loan_rmnd_ratem:String
             /// 성공 실패 여부
-            let rt_cd:String
+            let rt_cd:String?
             /// 응답코드
-            let msg_cd:String
+            let msg_cd:String?
             /// 응답메세지
-            let msg1:String
+            let msg1:String?
         }
         public struct Output2 : Codable {
             /// 주식 영업 일자

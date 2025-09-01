@@ -10,11 +10,11 @@ public extension KISAPI {
     enum 해외주식_실시간시세 {}
 }
 public extension KISAPI.해외주식_실시간시세 {
-    struct 해외주식_실시간지연체결가 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외주식_실시간지연체결가 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "제공 안함") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFSCNT0"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓 접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -33,7 +33,7 @@ public extension KISAPI.해외주식_실시간시세 {
                 case custtype
                 case content_type = "content-type"
             }
-            init(tr_type: String) async {
+            public init(tr_type: String) async {
                 self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
                 var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
@@ -43,7 +43,7 @@ public extension KISAPI.해외주식_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFSCNT0
             var tr_id: String = "HDFSCNT0"
@@ -51,11 +51,11 @@ public extension KISAPI.해외주식_실시간시세 {
             /// <미국 야간거래/아시아 주간거래 - 무료시세> D+시장구분(3자리)+종목코드 예) DNASAAPL : D+NAS(나스닥)+AAPL(애플) [시장구분] NYS : 뉴욕, NAS : 나스닥, AMS : 아멕스 , TSE : 도쿄, HKS : 홍콩, SHS : 상해, SZS : 심천 HSX : 호치민, HNX : 하노이 <미국 야간거래/아시아 주간거래 - 유료시세> ※ 유료시세 신청시에만 유료시세 수신가능 "포럼 > FAQ > 해외주식 유료시세 신청방법" 참고 R+시장구분(3자리)+종목코드 예) RNASAAPL : R+NAS(나스닥)+AAPL(애플) [시장구분] NYS : 뉴욕, NAS : 나스닥, AMS : 아멕스 , TSE : 도쿄, HKS : 홍콩, SHS : 상해, SZS : 심천 HSX : 호치민, HNX : 하노이 <미국 주간거래> R+시장구분(3자리)+종목코드 예) RBAQAAPL : R+BAQ(나스닥)+AAPL(애플) [시장구분] BAY : 뉴욕(주간), BAQ : 나스닥(주간). BAA : 아멕스(주간)
             let tr_key: String
         }
-        struct Init_Msg: Codable {
-            let header: Header
-            let body: Body
+        public struct Init_Msg: Codable {
+            public let header: Header
+            public let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 실시간종목코드
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let RSYM: String
@@ -112,12 +112,12 @@ public extension KISAPI.해외주식_실시간시세 {
             /// 시장구분 1:장중,2:장전,3:장후
             let MTYP: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외주식_실시간지연호가_아시아 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외주식_실시간지연호가_아시아 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "제공 안함") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFSASP1"
         struct Header : Codable {
@@ -157,11 +157,11 @@ public extension KISAPI.해외주식_실시간시세 {
             /// <아시아국가 - 무료시세> D+시장구분(3자리)+종목코드 예) DHKS00003 : D+HKS(홍콩)+00003(홍콩중화가스) [시장구분] TSE : 도쿄, HKS : 홍콩, SHS : 상해, SZS : 심천 HSX : 호치민, HNX : 하노이 <아시아국가 - 유료시세> ※ 유료시세 신청시에만 유료시세 수신가능 "포럼 > FAQ > 해외주식 유료시세 신청방법" 참고 R+시장구분(3자리)+종목코드 예) RHKS00003 : R+HKS(홍콩)+00003(홍콩중화가스) [시장구분] TSE : 도쿄, HKS : 홍콩, SHS : 상해, SZS : 심천 HSX : 호치민, HNX : 하노이
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 실시간종목코드
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let RSYM: String
@@ -198,15 +198,15 @@ public extension KISAPI.해외주식_실시간시세 {
             /// 매도잔량대비1
             let DASK1: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외주식_실시간체결통보 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외주식_실시간체결통보 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "ws://ops.koreainvestment.com:31000") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/H0GSCNI0"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓 접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -235,7 +235,7 @@ public extension KISAPI.해외주식_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// [실전투자] H0GSCNI0 : 실시간 해외주식 체결통보 [모의투자] H0GSCNI9 : 실시간 해외주식 체결통보
             var tr_id: String = KISManager.currentManager!.getValueForCurrentTargetServer(실전서버: "H0GSCNI0", 모의투자서버: "H0GSCNI9")
@@ -243,11 +243,11 @@ public extension KISAPI.해외주식_실시간시세 {
             /// HTSID
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 고객 ID
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let CUST_ID: String
@@ -305,15 +305,15 @@ public extension KISAPI.해외주식_실시간시세 {
             /// 대출일(YYYYMMDD)
             let DEBT_DATE: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외주식_실시간호가_미국 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외주식_실시간호가_미국 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFSASP0"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓 접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -342,7 +342,7 @@ public extension KISAPI.해외주식_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFSASP0
             var tr_id: String = "HDFSASP0"
@@ -350,17 +350,17 @@ public extension KISAPI.해외주식_실시간시세 {
             /// <미국 야간거래 - 무료시세> D+시장구분(3자리)+종목코드 예) DNASAAPL : D+NAS(나스닥)+AAPL(애플) [시장구분] NYS : 뉴욕, NAS : 나스닥, AMS : 아멕스 <미국 야간거래 - 유료시세> ※ 유료시세 신청시에만 유료시세 수신가능 "포럼 > FAQ > 해외주식 유료시세 신청방법" 참고 R+시장구분(3자리)+종목코드 예) RNASAAPL : D+NAS(나스닥)+AAPL(애플) [시장구분] NYS : 뉴욕, NAS : 나스닥, AMS : 아멕스 <미국 주간거래> R+시장구분(3자리)+종목코드 예) RBAQAAPL : R+BAQ(나스닥)+AAPL(애플) [시장구분] BAY : 뉴욕(주간), BAQ : 나스닥(주간). BAA : 아멕스(주간)
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 실시간종목코드
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let rsym: String
             let bstp_cls_code: BSTP_CLS_CODE
         }
-        struct BSTP_CLS_CODE : Codable {
+        public struct BSTP_CLS_CODE : Codable {
             /// 종목코드
             let symb: String
             /// 소숫점자리수
@@ -502,7 +502,7 @@ public extension KISAPI.해외주식_실시간시세 {
             /// 매도잔량대비10
             let dask10: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 }

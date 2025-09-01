@@ -5,6 +5,7 @@ import Foundation
 import FullyRESTful
 import KinKit
 import Combine
+import CanSubscribe
 
 public enum TargetServer {
     case 실전서버
@@ -87,16 +88,18 @@ public class KISManager {
     nonisolated(unsafe) static var currentManager: KISManager?
     let targetServer:TargetServer
     let baseHeader: [String: String]
-    var accessToken:AccessToken?
+//    var accessToken:AccessToken?
     var websocketAccessToken:AccessToken?
+    @CanSubscribe public var accessToken:AccessToken?
     @discardableResult
     public init(
         targetServer:TargetServer,
-        initInfo:InitInfo
+        initInfo:InitInfo,
+        accessToken:AccessToken?
     ) throws {
         self.targetServer = targetServer
         self.baseHeader = initInfo.header ?? [:]
-        self.accessToken = UserDefaults.standard.string(forKey: "accessToken")?.makeObj()
+        self.accessToken = accessToken
 //        guard let _ = KISManager.currentManager else {
             KISManager.currentManager = self
 //            return
@@ -119,7 +122,7 @@ public class KISManager {
         
         return newList
     }
-    struct AccessToken : Codable {
+    public struct AccessToken : Codable {
         let token:String
         let rawToken:String
         let tokenType:String
@@ -135,6 +138,9 @@ public class KISManager {
         else {
             return nil
         }
+        if accessToken == nil {
+            accessToken = UserDefaults.standard.string(forKey: "accessToken")?.makeObj()
+        }
         if let accessToken = accessToken, !accessToken.isExpired {
             return accessToken
         }
@@ -147,7 +153,7 @@ public class KISManager {
             rawToken: result.access_token,
             tokenType: result.token_type,
             expiresAt: Date().addingTimeInterval(TimeInterval(result.expires_in)))
-        UserDefaults.standard.set(accessToken?.JSONString, forKey: "accessToken")
+//        UserDefaults.standard.set(accessToken?.JSONString, forKey: "accessToken")
         return accessToken
     }
     func getWebsocketAccessToken() async -> AccessToken? {
@@ -194,10 +200,10 @@ public extension APIITEM {
     }
 }
 public protocol PagingInfo : Codable {
-    var CTX_AREA_FK100:String { get set }
-    var CTX_AREA_NK100:String { get set }
+    var ctx_area_fk100:String? { get set }
+    var ctx_area_nk100:String? { get set }
 }
-public protocol Pagingable {
+public protocol Pagingable : AnyObject {
     var hasNext:Bool { get set }
     var reqItem: (any PagingInfo)? { get set }
 }
@@ -218,8 +224,8 @@ public extension APIITEM {
            var pagingInfo = param as? PagingInfo,
            var pagingableObj = obj as? PagingInfo
         {
-            pagingInfo.CTX_AREA_FK100 = pagingableObj.CTX_AREA_FK100
-            pagingInfo.CTX_AREA_NK100 = pagingableObj.CTX_AREA_NK100
+            pagingInfo.ctx_area_fk100 = pagingableObj.ctx_area_fk100
+            pagingInfo.ctx_area_nk100 = pagingableObj.ctx_area_nk100
             pagingable.hasNext = response.allHeaderFields["tr_cont"] as? String == "M"
             pagingable.reqItem = pagingInfo
         }
@@ -249,8 +255,8 @@ public extension APIITEM {
                var pagingInfo = reqParam as? PagingInfo,
                var pagingableObj = obj as? PagingInfo
             {
-                pagingInfo.CTX_AREA_FK100 = pagingableObj.CTX_AREA_FK100
-                pagingInfo.CTX_AREA_NK100 = pagingableObj.CTX_AREA_NK100
+                pagingInfo.ctx_area_fk100 = pagingableObj.ctx_area_fk100
+                pagingInfo.ctx_area_nk100 = pagingableObj.ctx_area_nk100
                 pagingable.hasNext = response.allHeaderFields["tr_cont"] as? String == "M"
                 pagingable.reqItem = pagingInfo
             }
@@ -260,7 +266,7 @@ public extension APIITEM {
     }
 }
 
-protocol KISWebSocketITEM: WebSocketITEM {
+public protocol KISWebSocketITEM: WebSocketITEM {
     associatedtype Send: Codable
     associatedtype Receive: Codable
     
@@ -270,7 +276,7 @@ protocol KISWebSocketITEM: WebSocketITEM {
     var receive:Receive.Type { get }
 }
 
-extension KISWebSocketITEM {
+public extension KISWebSocketITEM {
     var decoder: JSONDecoder { JSONDecoder() }
 
     func listen() -> AnyPublisher<Receive, Error> {

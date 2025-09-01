@@ -345,9 +345,9 @@ public extension KISAPI.해외선물옵션_주문_계좌 {
             /// 00: 전체 / 01:선물 / 02: 옵션
             let FUOP_DVSN:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -1027,11 +1027,11 @@ public extension KISAPI.해외선물옵션_주문_계좌 {
             /// '%%% : 전체 TUS: TOT_USD / TKR: TOT_KRW KRW: 한국 / USD: 미국 EUR: EUR / HKD: 홍콩 CNY: 중국 / JPY: 일본 VND: 베트남 '
             let CRCY_CD:String
             /// 연속조회검색조건100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_FK100값 : 다음페이지 조회시(2번째부터)
-            let CTX_AREA_FK100:String
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_fk100값 : 다음페이지 조회시(2번째부터)
+            let ctx_area_fk100:String
             /// 연속조회키100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100값 : 다음페이지 조회시(2번째부터)
-            let CTX_AREA_NK100:String
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_nk100값 : 다음페이지 조회시(2번째부터)
+            let ctx_area_nk100:String
             /// 비밀번호체크여부
             /// 공란(Default)
             let PWD_CHK_YN:String

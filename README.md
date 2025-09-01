@@ -15,7 +15,7 @@ _ = try KISManager.init(targetServer: .실전서버, initInfo: .init(account_id:
 
 ## 계좌 조회
 ```swift
-let result = try await KISAPI.국내주식_주문_계좌.inquirebalance().request(param: .init(AFHR_FLPR_YN: "N", OFL_YN: "", INQR_DVSN: "02", UNPR_DVSN: "01", FUND_STTL_ICLD_YN: "N", FNCG_AMT_AUTO_RDPT_YN: "N", PRCS_DVSN: "00", CTX_AREA_FK100: "", CTX_AREA_NK100: ""))
+let result = try await KISAPI.국내주식_주문_계좌.inquirebalance().request(param: .init(AFHR_FLPR_YN: "N", OFL_YN: "", INQR_DVSN: "02", UNPR_DVSN: "01", FUND_STTL_ICLD_YN: "N", FNCG_AMT_AUTO_RDPT_YN: "N", PRCS_DVSN: "00", ctx_area_fk100: "", ctx_area_nk100: ""))
 print(result?.model)
 ```
 ---

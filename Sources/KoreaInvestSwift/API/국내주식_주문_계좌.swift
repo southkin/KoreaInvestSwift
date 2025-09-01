@@ -7,6 +7,7 @@
 import FullyRESTful
 import Foundation
 import KinKit
+
 public extension KISAPI {
     public enum 국내주식_주문_계좌 {}
     public enum 국내주식_주문_계좌_퇴직연금 {}
@@ -68,11 +69,11 @@ public extension KISAPI.국내주식_주문_계좌 {
         }
         public struct Output : Codable {
             /// 거래소코드
-            public let krx_fwdg_ord_orgno:String
+            public let KRX_FWDG_ORD_ORGNO:String
             /// 주문번호
-            public let odno:String
+            public let ODNO:String
             /// 주문시간
-            public let ord_tmd:String
+            public let ORD_TMD:String
         }
         public let requestModel = Request.self
         public let responseModel = Response.self
@@ -455,22 +456,22 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 계좌번호 체계(8-2)의 뒤 2자리
             var ACNT_PRDT_CD:String = KISManager.currentManager!.ACNT_PRDT_CD()
             /// 연속조회검색조건100
-            /// '공란 : 최초 조회시는 이전 조회 Output CTX_AREA_FK100 값 : 다음페이지 조회시(2번째부터)'
-            let CTX_AREA_FK100:String
+            /// '공란 : 최초 조회시는 이전 조회 Output ctx_area_fk100 값 : 다음페이지 조회시(2번째부터)'
+            let ctx_area_fk100:String
             /// 연속조회키100
-            /// '공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)'
-            let CTX_AREA_NK100:String
+            /// '공란 : 최초 조회시 이전 조회 Output ctx_area_nk100 값 : 다음페이지 조회시(2번째부터)'
+            let ctx_area_nk100:String
             /// 조회구분1
             /// '0 주문 1 종목'
             let INQR_DVSN_1:String
             /// 조회구분2
             /// '0 전체 1 매도 2 매수'
             let INQR_DVSN_2:String
-            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, CTX_AREA_FK100: String, CTX_AREA_NK100: String, INQR_DVSN_1: String, INQR_DVSN_2: String) {
+            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, ctx_area_fk100: String, ctx_area_nk100: String, INQR_DVSN_1: String, INQR_DVSN_2: String) {
                 self.CANO = CANO ?? KISManager.currentManager!.getCANO()
                 self.ACNT_PRDT_CD = ACNT_PRDT_CD ?? KISManager.currentManager!.ACNT_PRDT_CD()
-                self.CTX_AREA_FK100 = CTX_AREA_FK100
-                self.CTX_AREA_NK100 = CTX_AREA_NK100
+                self.ctx_area_fk100 = ctx_area_fk100
+                self.ctx_area_nk100 = ctx_area_nk100
                 self.INQR_DVSN_1 = INQR_DVSN_1
                 self.INQR_DVSN_2 = INQR_DVSN_2
             }
@@ -576,14 +577,19 @@ public extension KISAPI.국내주식_주문_계좌 {
 
     /// 주식일별주문체결조회[v1_국내주식-005]
     /// 주식일별주문체결조회 API입니다. 실전계좌의 경우, 한 번의 호출에 최대 100건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. 모의계좌의 경우, 한 번의 호출에 최대 15건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. * 다만, 3개월 이전 체결내역 조회(CTSC9115R) 의 경우, 장중에는 많은 거래량으로 인해 순간적으로 DB가 밀렸거나 응답을 늦게 받거나 하는 등의 이슈가 있을 수 있어① 가급적 장 종료 이후(15:30 이후) 조회하시고 ② 조회기간(INQR_STRT_DT와 INQR_END_DT 사이의 간격)을 보다 짧게 해서 조회하는 것을권유드립니다.
-    struct inquiredailyccld : APIITEM, NeedHash {
-        public struct Request : Codable {
+    class inquiredailyccld : APIITEM, NeedHash, Pagingable {
+        public var curlLog: Bool = false
+        public var hasNext: Bool = false
+        
+        public var reqItem: (any PagingInfo)?
+        
+        public struct Request : Codable, PagingInfo {
             /// 종합계좌번호
             /// 계좌번호 체계(8-2)의 앞 8자리
-            var CANO:String = KISManager.currentManager!.getCANO()
+            var CANO:String
             /// 계좌상품코드
             /// 계좌번호 체계(8-2)의 뒤 2자리
-            var ACNT_PRDT_CD:String = KISManager.currentManager!.ACNT_PRDT_CD()
+            var ACNT_PRDT_CD:String
             /// 조회시작일자
             /// YYYYMMDD
             let INQR_STRT_DT:String
@@ -616,119 +622,136 @@ public extension KISAPI.국내주식_주문_계좌 {
             let INQR_DVSN_3:String
             /// 거래소ID구분코드
             /// KRX : KRX NXT : NXT
-            let EXCG_ID_DVSN_CD:String
+            let EXCG_ID_DVSN_CD:EXCG_ID_DVSN_CD_ENUM
             /// 연속조회검색조건100
-            /// '공란 : 최초 조회시는 이전 조회 Output CTX_AREA_FK100 값 : 다음페이지 조회시(2번째부터)'
-            let CTX_AREA_FK100:String
+            /// '공란 : 최초 조회시는 이전 조회 Output ctx_area_fk100 값 : 다음페이지 조회시(2번째부터)'
+            public var ctx_area_fk100:String?
             /// 연속조회키100
-            /// '공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)'
-            let CTX_AREA_NK100:String
+            /// '공란 : 최초 조회시 이전 조회 Output ctx_area_nk100 값 : 다음페이지 조회시(2번째부터)'
+            public var ctx_area_nk100:String?
+            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, INQR_STRT_DT: String, INQR_END_DT: String, SLL_BUY_DVSN_CD: String, PDNO: String, ORD_GNO_BRNO: String, ODNO: String, CCLD_DVSN: String, INQR_DVSN: String, INQR_DVSN_1: String, INQR_DVSN_3: String, EXCG_ID_DVSN_CD: EXCG_ID_DVSN_CD_ENUM, ctx_area_fk100: String, ctx_area_nk100: String) {
+                self.CANO = CANO ?? KISManager.currentManager!.getCANO()
+                self.ACNT_PRDT_CD = ACNT_PRDT_CD ?? KISManager.currentManager!.ACNT_PRDT_CD()
+                self.INQR_STRT_DT = INQR_STRT_DT
+                self.INQR_END_DT = INQR_END_DT
+                self.SLL_BUY_DVSN_CD = SLL_BUY_DVSN_CD
+                self.PDNO = PDNO
+                self.ORD_GNO_BRNO = ORD_GNO_BRNO
+                self.ODNO = ODNO
+                self.CCLD_DVSN = CCLD_DVSN
+                self.INQR_DVSN = INQR_DVSN
+                self.INQR_DVSN_1 = INQR_DVSN_1
+                self.INQR_DVSN_3 = INQR_DVSN_3
+                self.EXCG_ID_DVSN_CD = EXCG_ID_DVSN_CD
+                self.ctx_area_fk100 = ctx_area_fk100
+                self.ctx_area_nk100 = ctx_area_nk100
+            }
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
-            let rt_cd: String
+            public let rt_cd: String?
             /// 응답코드 -
-            let msg_cd: String
+            public let msg_cd: String?
             /// 응답메세지 -
-            let msg1: String
+            public let msg1: String?
             /// 응답상세 : Object Array
             /// array
-            let output1: [Output1]
+            public let output1: [Output1]
             /// 응답상세 : Object
             /// single
-            let output2: Output2
+            public let output2: Output2
         }
         public struct Output1 : Codable {
             /// 주문일자
-            let ord_dt:String
+            public let ord_dt:String
             /// 주문채번지점번호
-            let ord_gno_brno:String
+            public let ord_gno_brno:String
             /// 주문번호
-            let odno:String
+            public let odno:String
             /// 원주문번호
-            let orgn_odno:String
+            public let orgn_odno:String
             /// 주문구분명
-            let ord_dvsn_name:String
+            public let ord_dvsn_name:String
             /// 매도매수구분코드
-            let sll_buy_dvsn_cd:String
+            public let sll_buy_dvsn_cd:String
             /// 매도매수구분코드명
-            let sll_buy_dvsn_cd_name:String
+            public let sll_buy_dvsn_cd_name:String
             /// 상품번호
-            let pdno:String
+            public let pdno:String
             /// 상품명
-            let prdt_name:String
+            public let prdt_name:String
             /// 주문수량
-            let ord_qty:String
+            public let ord_qty:String
             /// 주문단가
-            let ord_unpr:String
+            public let ord_unpr:String
             /// 주문시각
-            let ord_tmd:String
+            public let ord_tmd:String
             /// 총체결수량
-            let tot_ccld_qty:String
+            public let tot_ccld_qty:String
             /// 평균가
-            let avg_prvs:String
+            public let avg_prvs:String
             /// 취소여부
-            let cncl_yn:String
+            public let cncl_yn:String
             /// 총체결금액
-            let tot_ccld_amt:String
+            public let tot_ccld_amt:String
             /// 대출일자
-            let loan_dt:String
+            public let loan_dt:String
             /// 주문자사번
-            let ordr_empno:String
+            public let ordr_empno:String
             /// 주문구분코드
-            let ord_dvsn_cd:String
+            public let ord_dvsn_cd:String
             /// 취소확인수량
-            let cnc_cfrm_qty:String
+            public let cnc_cfrm_qty:String?
             /// 잔여수량
-            let rmn_qty:String
+            public let rmn_qty:String
             /// 거부수량
-            let rjct_qty:String
+            public let rjct_qty:String
             /// 체결조건명
-            let ccld_cndt_name:String
+            public let ccld_cndt_name:String
             /// 조회IP주소
-            let inqr_ip_addr:String
+            public let inqr_ip_addr:String
             /// 전산주문표주문접수구분코드
-            let cpbc_ordp_ord_rcit_dvsn_cd:String
+            public let cpbc_ordp_ord_rcit_dvsn_cd:String
             /// 전산주문표통보방법구분코드
-            let cpbc_ordp_infm_mthd_dvsn_cd:String
+            public let cpbc_ordp_infm_mthd_dvsn_cd:String
             /// 통보시각
-            let infm_tmd:String
+            public let infm_tmd:String
             /// 연락전화번호
-            let ctac_tlno:String
+            public let ctac_tlno:String
             /// 상품유형코드
-            let prdt_type_cd:String
+            public let prdt_type_cd:String
             /// 거래소구분코드
-            let excg_dvsn_cd:String
+            public let excg_dvsn_cd:String
             /// 전산주문표자료구분코드
-            let cpbc_ordp_mtrl_dvsn_cd:String
+            public let cpbc_ordp_mtrl_dvsn_cd:String
             /// 주문조직번호
-            let ord_orgno:String
+            public let ord_orgno:String
             /// 예약주문종료일자
-            let rsvn_ord_end_dt:String
+            public let rsvn_ord_end_dt:String
             /// 거래소ID구분코드
-            let excg_id_dvsn_Cd:String
+            public let excg_id_dvsn_Cd:EXCG_ID_DVSN_CD_ENUM?
             /// 스톱지정가조건가격
-            let stpm_cndt_pric:String
+            public let stpm_cndt_pric:String
             /// 스톱지정가효력발생상세시각
-            let stpm_efct_occr_dtmd:String
+            public let stpm_efct_occr_dtmd:String
             /// 성공 실패 여부
-            let rt_cd:String
+            public let rt_cd:String?
             /// 응답코드
-            let msg_cd:String
+            public let msg_cd:String?
             /// 응답메세지
-            let msg1:String
+            public let msg1:String?
         }
         public struct Output2 : Codable {
             /// 총주문수량
-            let tot_ord_qty:String
+            public let tot_ord_qty:String
             /// 총체결수량
-            let tot_ccld_qty:String
+            public let tot_ccld_qty:String
             /// 매입평균가격
-            let tot_ccld_amt:String
+            public let tot_ccld_amt:String
             /// 총체결금액
-            let prsm_tlex_smtl:String
+            public let prsm_tlex_smtl:String
             /// 추정제비용합계
-            let pchs_avg_pric:String
+            public let pchs_avg_pric:String
         }
         public let requestModel = Request.self
         public let responseModel = Response.self
@@ -736,11 +759,11 @@ public extension KISAPI.국내주식_주문_계좌 {
         public let server: ServerInfo
         public let path = "/uapi/domestic-stock/v1/trading/inquire-daily-ccld"
         public var customHeader: [String : String]?
-        enum TR_ID : String {
+        public enum TR_ID : String {
             case _3개월이내 = "TTTC0081R"
             case _3개월이전 = "CTSC9215R"
         }
-        init(tr_id: TR_ID, gt_uid: String? = nil) async throws {
+        public init(tr_id: TR_ID, gt_uid: String? = nil) async throws {
             self.server = try KISManager.currentManager!.getCurrentServer()
             self.customHeader = KISManager.currentManager!.headerPick(names: [
                 "content-type", // application/json; charset=utf-8
@@ -767,13 +790,13 @@ public extension KISAPI.국내주식_주문_계좌 {
 
     /// 주식잔고조회[v1_국내주식-006]
     /// 주식 잔고조회 API입니다. 실전계좌의 경우, 한 번의 호출에 최대 50건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. 모의계좌의 경우, 한 번의 호출에 최대 20건까지 확인 가능하며, 이후의 값은 연속조회를 통해 확인하실 수 있습니다. * 당일 전량매도한 잔고도 보유수량 0으로 보여질 수 있으나, 해당 보유수량 0인 잔고는 최종 D-2일 이후에는 잔고에서 사라집니다.
-    public struct inquirebalance : APIITEM, NeedHash, Pagingable {
+    public class inquirebalance : APIITEM, NeedHash, Pagingable {
         
         public var hasNext: Bool = false
         
         public var reqItem: (any PagingInfo)?
         
-        public struct Request : Codable {
+        public struct Request : Codable, Sendable {
             /// 종합계좌번호
             /// 계좌번호 체계(8-2)의 앞 8자리
             public var CANO:String
@@ -802,12 +825,12 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 00 : 전일매매포함 01 : 전일매매미포함
             public let PRCS_DVSN:String
             /// 연속조회검색조건100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_FK100 값 : 다음페이지 조회시(2번째부터)
-            public let CTX_AREA_FK100:String
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_fk100 값 : 다음페이지 조회시(2번째부터)
+            public let ctx_area_fk100:String?
             /// 연속조회키100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)
-            public let CTX_AREA_NK100:String
-            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, AFHR_FLPR_YN: String, OFL_YN: String, INQR_DVSN: String, UNPR_DVSN: String, FUND_STTL_ICLD_YN: String, FNCG_AMT_AUTO_RDPT_YN: String, PRCS_DVSN: String, CTX_AREA_FK100: String = "", CTX_AREA_NK100: String = "") {
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_nk100 값 : 다음페이지 조회시(2번째부터)
+            public let ctx_area_nk100:String?
+            public init(CANO: String? = nil, ACNT_PRDT_CD: String? = nil, AFHR_FLPR_YN: String, OFL_YN: String, INQR_DVSN: String, UNPR_DVSN: String, FUND_STTL_ICLD_YN: String, FNCG_AMT_AUTO_RDPT_YN: String, PRCS_DVSN: String, ctx_area_fk100: String = "", ctx_area_nk100: String = "") {
                 self.CANO = CANO ?? KISManager.currentManager!.getCANO()
                 self.ACNT_PRDT_CD = ACNT_PRDT_CD ?? KISManager.currentManager!.ACNT_PRDT_CD()
                 self.AFHR_FLPR_YN = AFHR_FLPR_YN
@@ -817,8 +840,8 @@ public extension KISAPI.국내주식_주문_계좌 {
                 self.FUND_STTL_ICLD_YN = FUND_STTL_ICLD_YN
                 self.FNCG_AMT_AUTO_RDPT_YN = FNCG_AMT_AUTO_RDPT_YN
                 self.PRCS_DVSN = PRCS_DVSN
-                self.CTX_AREA_FK100 = CTX_AREA_FK100
-                self.CTX_AREA_NK100 = CTX_AREA_NK100
+                self.ctx_area_fk100 = ctx_area_fk100
+                self.ctx_area_nk100 = ctx_area_nk100
             }
         }
         public struct Response: Codable, PagingInfo {
@@ -829,9 +852,9 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 응답메세지 - 응답메세지
             public let msg1: String
             /// 연속조회검색조건100 -
-            public var CTX_AREA_FK100: String
+            public var ctx_area_fk100: String?
             /// 연속조회키100 -
-            public var CTX_AREA_NK100: String
+            public var ctx_area_nk100: String?
             /// 응답상세1 : Object Array
             /// Array
             public let output1: [Output1]
@@ -1428,9 +1451,9 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 00
             let USER_DVSN_CD:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -1551,11 +1574,11 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 비용포함여부
             let COST_ICLD_YN:String
             /// 연속조회검색조건100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_FK100 값 : 다음페이지 조회시(2번째부터)
-            let CTX_AREA_FK100:String
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_fk100 값 : 다음페이지 조회시(2번째부터)
+            let ctx_area_fk100:String
             /// 연속조회키100
-            /// 공란 : 최초 조회시 이전 조회 Output CTX_AREA_NK100 값 : 다음페이지 조회시(2번째부터)
-            let CTX_AREA_NK100:String
+            /// 공란 : 최초 조회시 이전 조회 Output ctx_area_nk100 값 : 다음페이지 조회시(2번째부터)
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -1957,12 +1980,12 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 조회종료일자
             let INQR_END_DT:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
             /// 잔고구분
             /// 00: 전체
             let CBLC_DVSN:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -2100,7 +2123,7 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// ""공란입력 시, 전체
             let PDNO:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
             /// 조회종료일자
             let INQR_END_DT:String
             /// 정렬구분
@@ -2113,7 +2136,7 @@ public extension KISAPI.국내주식_주문_계좌 {
             /// 00: 전체
             let CBLC_DVSN:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -2606,10 +2629,10 @@ public extension KISAPI.국내주식_주문_계좌 {
             let PRDT_TYPE_CD:String
             /// 연속조회키100
             /// 다음조회시 입력
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
             /// 연속조회검색조건100
             /// 다음조회시 입력
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -2738,9 +2761,9 @@ public extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 00 : 전체
             let INQR_DVSN_3:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -
@@ -2969,9 +2992,9 @@ public extension KISAPI.국내주식_주문_계좌_퇴직연금 {
             /// 00 : 전체
             let INQR_DVSN:String
             /// 연속조회검색조건100
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
             /// 연속조회키100
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -

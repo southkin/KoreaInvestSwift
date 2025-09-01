@@ -1422,10 +1422,10 @@ public extension KISAPI.해외주식_시세분석 {
             let LOAN_PSBL_YN:String
             /// 연속조회검색조건100
             /// 공백
-            let CTX_AREA_FK100:String
+            let ctx_area_fk100:String
             /// 연속조회키100
             /// 공백
-            let CTX_AREA_NK100:String
+            let ctx_area_nk100:String
         }
         public struct Response: Codable {
             /// 성공 실패 여부 -

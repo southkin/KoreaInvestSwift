@@ -10,11 +10,11 @@ public extension KISAPI {
     enum 해외선물옵션_실시간시세 {}
 }
 public extension KISAPI.해외선물옵션_실시간시세 {
-    struct 해외선물옵션_실시간체결가 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외선물옵션_실시간체결가 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFFF020"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -33,7 +33,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case custtype
                 case content_type = "content-type"
             }
-            init(tr_type: String) async {
+            public init(tr_type: String) async {
                 self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
                 var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
@@ -43,7 +43,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFFF020
             var tr_id: String = "HDFFF020"
@@ -51,17 +51,17 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 종목코드 ※ CME, SGX 실시간시세 유료시세 신청 필수 "포럼 > FAQ > 해외선물옵션 API 유료시세 신청방법(CME, SGX 거래소)"
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 종목코드
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let series_cd: String
             let bstp_cls_code: BSTP_CLS_CODE
         }
-        struct BSTP_CLS_CODE : Codable {
+        public struct BSTP_CLS_CODE : Codable {
             /// 영업일자
             let bsns_date: String
             /// 장개시일자
@@ -114,15 +114,15 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 전일정산가대비율
             let psttl_diff_rate: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외선물옵션_실시간호가 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외선물옵션_실시간호가 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFFF010"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -141,7 +141,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case tr_type
                 case content_type = "content-type"
             }
-            init(tr_type: String) async {
+            public init(tr_type: String) async {
                 self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
                 var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
@@ -151,7 +151,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFFF010
             var tr_id: String = "HDFFF010"
@@ -159,17 +159,17 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 종목코드 ※ CME, SGX 실시간시세 유료시세 신청 필수 "포럼 > FAQ > 해외선물옵션 API 유료시세 신청방법(CME, SGX 거래소)"
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 종목코드
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let series_cd: String
             let bstp_cls_code: BSTP_CLS_CODE
         }
-        struct BSTP_CLS_CODE : Codable {
+        public struct BSTP_CLS_CODE : Codable {
             /// 수신일자
             let recv_date: String
             /// 수신시각
@@ -240,15 +240,15 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 전일정산가
             let sttl_price: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외선물옵션_실시간주문내역통보 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외선물옵션_실시간주문내역통보 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFFF1C0"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -267,7 +267,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case custtype
                 case content_type = "content-type"
             }
-            init(tr_type: String) async {
+            public init(tr_type: String) async {
                 self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
                 var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
@@ -277,7 +277,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFFF1C0
             var tr_id: String = "HDFFF1C0"
@@ -285,17 +285,17 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// HTSID
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 유저ID
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let user_id: String
             let bstp_cls_code: BSTP_CLS_CODE
         }
-        struct BSTP_CLS_CODE : Codable {
+        public struct BSTP_CLS_CODE : Codable {
             /// 계좌번호
             let acct_no: String
             /// 주문일자
@@ -367,15 +367,15 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 자동주문 전략구분
             let auto_ord_dvsn_cd: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 
-    struct 해외선물옵션_실시간체결내역통보 : KISWebSocketITEM {
-        var initialMessage: Send
+    public struct 해외선물옵션_실시간체결내역통보 : KISWebSocketITEM {
+        public var initialMessage: Send
         public var server: ServerInfo = .init(domain: KISManager.currentManager?.targetServer.getValue(실전서버: "ws://ops.koreainvestment.com:21000", 모의투자서버: "모의투자 미지원") ?? "", defaultHeader: [:])
         public var path: String = "/tryitout/HDFFF2C0"
-        struct Header : Codable {
+        public struct Header : Codable {
             /// 웹소켓 접속키
             /// 실시간 (웹소켓) 접속키 발급 API(/oauth2/Approval)를 사용하여 발급받은 웹소켓 접속키
             let approval_key: String
@@ -394,7 +394,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 case custtype
                 case content_type = "content-type"
             }
-            init(tr_type: String) async {
+            public init(tr_type: String) async {
                 self.approval_key = await KISManager.currentManager?.getWebsocketAccessToken()?.token ?? ""
                 var headers = KISManager.currentManager!.headerPick(names: [
                     "custtype",
@@ -404,7 +404,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
                 self.content_type = "utf-8"
             }
         }
-        struct Body : Codable {
+        public struct Body : Codable {
             /// 거래ID
             /// HDFFF2C0
             var tr_id: String = "HDFFF2C0"
@@ -412,17 +412,17 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// HTSID
             let tr_key: String
         }
-        struct Init_Msg: Codable {
+        public struct Init_Msg: Codable {
             let header: Header
             let body: Body
         }
-        struct Receive_Msg : Codable {
+        public struct Receive_Msg : Codable {
             /// 유저ID
             /// '각 항목사이에는 구분자로 ^ 사용, 모든 데이터타입은 String으로 변환되어 push 처리됨'
             let user_id: String
             let bstp_cls_code: BSTP_CLS_CODE
         }
-        struct BSTP_CLS_CODE : Codable {
+        public struct BSTP_CLS_CODE : Codable {
             /// 계좌번호
             let acct_no: String
             /// 주문일자
@@ -493,7 +493,7 @@ public extension KISAPI.해외선물옵션_실시간시세 {
             /// 선물옵션종목구분코드
             let fuop_item_dvsn_cd: String
         }
-        var send = Init_Msg.self
-        var receive = Receive_Msg.self
+        public var send = Init_Msg.self
+        public var receive = Receive_Msg.self
     }
 }

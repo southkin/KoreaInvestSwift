@@ -16,6 +16,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/southkin/FullyRESTful.git", from: "3.0.0"),
         .package(url: "https://github.com/southkin/kinkit.git", from: "1.0.0"),
+        .package(url: "https://github.com/southkin/HasLazyServer.git", branch: "main"),
+        .package(url: "https://github.com/southkin/CanSubscribe.git", from: "2.0.0")
 //        .package(url: "https://github.com/southkin/FullyRESTful.git", branch: "main")
     ],
     targets: [
@@ -23,6 +25,8 @@ let package = Package(
             name: "KoreaInvestSwift", dependencies: [
                 .product(name: "FullyRESTful", package: "FullyRESTful"),
                 .product(name: "KinKit", package: "KinKit"),
+                .product(name: "HasLazyServer", package: "HasLazyServer"),
+                .product(name: "CanSubscribe", package: "CanSubscribe"),
             ]),
         .testTarget(
             name: "KoreaInvestSwiftTests",

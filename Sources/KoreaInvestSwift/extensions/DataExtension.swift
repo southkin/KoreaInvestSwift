@@ -10,9 +10,9 @@ public extension Data {
     func makeObj<T:Decodable>() -> T? {
         return try? JSONDecoder().decode(T.self, from: self)
     }
-    func makeObj<T:Decodable>(type:T.Type) -> T? {
-        return makeObj()
-    }
+//    func makeObj<T:Decodable>(type:T.Type) -> T? {
+//        return makeObj()
+//    }
     var dict:[String:Any]? {
         return try? JSONSerialization.jsonObject(with: self) as? [String:Any]
     }

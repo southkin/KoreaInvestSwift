@@ -74,7 +74,7 @@ public extension KISAPI.OAuth인증 {
         public struct Response : Codable {
             ///요청값
             ///요청한 JsonBody
-            let JsonBody:String
+//            let JsonBody:[String:Any]
             ///해쉬키
             ///[POST API 대상] Client가 요청하는 Request Body를 hashkey api로 생성한 Hash값
             ///* API문서 > hashkey 참조
